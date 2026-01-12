@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SkillMoon - Online Skill Assessment & Certification Platform. Prove your skills and get certified today.">
+    <title>SkillMoon | Assessment & Certification</title>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #2b0c52; /* Deep Purple/Blue */
+            --secondary-color: #6c63ff; /* Vivid Purple/Blue */
+            --accent-color: #ffb703; /* Gold/Yellow for CTA/Stars */
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --bg-light: #f9fafb;
+            --success: #10b981;
+            --transition: all 0.3s ease;
+        }
+        header {
+  background: #ffffff;
+}
+.compliance-bar {
+  background: #f6f8fc;
+  border-bottom: 1px solid #e2e6ef;
+  padding: 8px 0;
+}
+
+.compliance-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #444;
+}
+
+.compliance-container .badge {
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+.compliance-container .divider {
+  color: #aaa;
+}
+@media (max-width: 600px) {
+  .compliance-container {
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .compliance-container .divider {
+    display: none;
+  }
+}
+.compliance-container .badge {
+  background: #ffffff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid #dfe3eb;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;     /* vertical center */
+  justify-content: space-between;
+  height: 70px;            /* fixed clean header height */
+  padding: 0 20px;
+}
+
+.logo img {
+  height: 150px;            /* 👈 KEY FIX */
+  width: auto;
+  object-fit: contain;
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(108, 99, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Using a CSS shape for logo placeholder if image fails */
+        .logo-icon {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* Decorative Background Circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .c1 { width: 300px; height: 300px; top: -100px; left: -100px; }
+        .c2 { width: 200px; height: 200px; bottom: 50px; right: -50px; }
+
+        /* --- ABOUT SECTION --- */
+        .about-section {
+            background-color: var(--bg-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .about-image {
+            background-color: #ddd; /* Placeholder color */
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* --- CATEGORIES SECTION --- */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--secondary-color);
+        }
+
+        .cat-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .category-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .category-card .btn-small {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* --- HOW IT WORKS --- */
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step-item {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step-item h3 {
+            margin-bottom: 10px;
+        }
+
+        /* --- PRICING --- */
+        .pricing-section {
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
+        }
+
+        .pricing-card {
+            background: var(--white);
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+        
+        .price span {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .features-list {
+            margin: 30px 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .features-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .features-list i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+
+        /* --- WHY CHOOSE US --- */
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .why-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            border-radius: 20px;
+            margin: 40px 20px;
+            padding: 60px 20px;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 20px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111;
+            color: #aaa;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .social-links a {
+            margin-left: 15px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--white);
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                display: none; /* Hidden by default */
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-image { order: -1; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                 <img src="image/logo.png"> 
+                
+            </a>
+            
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#categories">Assessments</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="https://wa.me/919562044735" class="btn btn-primary" style="padding: 8px 20px;">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <div class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Compliance / Certification Bar -->
+<section class="compliance-bar">
+  <div class="compliance-container">
+    <span class="badge">ISO Certified</span>
+    <span class="divider">|</span>
+    <span class="badge">IAF Accredited</span>
+    <span class="divider">|</span>
+    <span class="badge">MSME Registered</span>
+  </div>
+</section>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="container hero-content">
+            <h1> Prove Your Skills.<br>Get Certified.</h1>
+            <p>Take industry-standard assessment tests, validate your knowledge, and boost your career with SkillMoon certification.</p>
+            <a href="#categories" class="btn btn-primary">Start Assessment</a>
+            <a href="#pricing" class="btn btn-outline" style="margin-left: 10px;">View Pricing</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Empowering Your Career Growth</h2>
+                    <p>SkillMoon is a premier online skill assessment platform designed to help professionals and students validate their expertise.</p>
+                    <p>In today's competitive job market, a resume isn't enough. Employers need proof. Our rigorously designed tests cover a wide range of domains from HR to Data Analytics.</p>
+                    <p><strong>Take the test, pass the assessment, and earn a verifiable certificate to showcase on LinkedIn and your CV.</strong></p>
+                    <a href="#why-us" style="color: var(--secondary-color); font-weight: 600;">Learn more about our process &rarr;</a>
+                </div>
+                <div class="about-image">
+                    <!-- Placeholder text inside the image div -->
+                    <span style="font-size: 1.5rem; font-weight: bold; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Unlock Your Potential</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Categories -->
+    <section id="categories" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Assessment Categories</h2>
+                <p class="section-subtitle">Choose your domain and start your certification journey.</p>
+            </div>
+
+            <div class="categories-grid">
+                <!-- HR -->
+                <div class="category-card">
+                    <i class="fas fa-users-cog cat-icon"></i>
+                    <h3>HR Management</h3>
+                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20HR%20Management%20Assessment" class="btn-small">Take Test &rarr;</a>
+                </div>
+                <!-- Accounting -->
+                <div class="category-card">
+                    <i class="fas fa-calculator cat-icon"></i>
+                    <h3>Accounting</h3>
+                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Accounting%20Assessment" class="btn-small">Take Test &rarr;</a>
+                </div>
+                <!-- Digital Marketing -->
+                <div class="category-card">
+                    <i class="fas fa-bullhorn cat-icon"></i>
+                    <h3>Digital Marketing</h3>
+                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Digital%20Marketing%20Assessment" class="btn-small">Take Test &rarr;</a>
+                </div>
+                <!-- Office Admin -->
+                <div class="category-card">
+                    <i class="fas fa-building cat-icon"></i>
+                    <h3>Office Administration</h3>
+                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Office%20Admin%20Assessment" class="btn-small">Take Test &rarr;</a>
+                </div>
+                <!-- Business Admin -->
+                <div class="category-card">
+                    <i class="fas fa-briefcase cat-icon"></i>
+                    <h3>Business Admin</h3>
+                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Business%20Admin%20Assessment" class="btn-small">Take Test &rarr;</a>
+                </div>
+                <!-- Data Analytics -->
+                <div class="category-card">
+                    <i class="fas fa-chart-line cat-icon"></i>
+                    <h3>Data Analytics</h3>
+                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Data%20Analytics%20Assessment" class="btn-small">Take Test &rarr;</a>
+                </div>
+                <!-- Graphic Design -->
+                <div class="category-card">
+                    <i class="fas fa-pen-nib cat-icon"></i>
+                    <h3>Graphic Designing</h3>
+                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Graphic%20Design%20Assessment" class="btn-small">Take Test &rarr;</a>
+                </div>
+                <!-- Excel -->
+                <div class="category-card">
+                    <i class="fas fa-file-excel cat-icon"></i>
+                    <h3>MS Excel & Tools</h3>
+                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20MS%20Excel%20Assessment" class="btn-small">Take Test &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section-padding" style="background-color: var(--white);">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Get certified in 3 simple steps.</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3>Choose Skill</h3>
+                    <p>Select your area of expertise from our list of assessments.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3>Take Assessment</h3>
+                    <p>Complete the online test. Questions are practical & industry-relevant.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3>Unlock Certificate</h3>
+                    <p>Pass the test and receive your verified SkillMoon Certificate instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section-padding pricing-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Simple Pricing</h2>
+                <p class="section-subtitle">Invest in your career for a nominal fee.</p>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Standard Certification</h3>
+                <div class="price">₹499 <span>/ assessment</span></div>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Online Skill Assessment</li>
+                    <li><i class="fas fa-check-circle"></i> Instant Score Evaluation</li>
+                    <li><i class="fas fa-check-circle"></i> Verified Digital Certificate</li>
+                    <li><i class="fas fa-check-circle"></i> Lifetime Certificate Validity</li>
+                    <li><i class="fas fa-check-circle"></i> Job-Ready Skill Validation</li>
+                </ul>
+
+                <a href="https://wa.me/919562044735" class="btn btn-primary" style="width: 100%;" target="_blank">Get Certified Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Why SkillMoon?</h2>
+                <p class="section-subtitle">We are dedicated to your professional growth.</p>
+            </div>
+            <div class="why-us-grid">
+                <div class="why-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Recognized</h3>
+                    <p>Certificates that add value to your resume.</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-wallet"></i>
+                    <h3>Affordable</h3>
+                    <p>Premium assessment at a student-friendly price.</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Flexible</h3>
+                    <p>Take the test online, anytime, anywhere.</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Career Boost</h3>
+                    <p>Prove your skills to potential employers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <div id="contact" class="container">
+        <section class="cta-section">
+            <h2>Ready to Prove Your Skills?</h2>
+            <p style="margin-bottom: 30px; font-size: 1.2rem;">Join hundreds of professionals getting certified with SkillMoon.</p>
+            <a href="https://wa.me/919562044735" target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 style="color: var(--white); margin-bottom: 10px;">SkillMoon</h3>
+                    <p>Your partner in skill assessment and career growth.</p>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://wa.me/91XXXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #333; margin-top: 20px; padding-top: 20px; text-align: center;">
+                <p>&copy; <span id="year"></span> SkillMoon International. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Update Copyright Year automaticall
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
