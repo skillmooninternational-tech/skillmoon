@@ -1,951 +1,686 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SkillMoon - Online Skill Assessment & Certification Platform. Prove your skills and get certified today.">
-    <title>SkillMoon | Assessment & Certification</title>
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>SkillMoon International | Certified Assessment Agency</title>
+    <meta name="description" content="SkillMoon International - ISO & IAF Affiliated Assessment Agency. Get certified in HR, Digital Marketing, Data Analytics and more for just ₹499.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#9C27B0', // The specific Purple requested
+                            secondary: '#BA68C8', // Lighter Purple for gradients
+                            accent: '#FFD700',  // Gold (matches well with #9C27B0)
+                            dark: '#4A148C',    // Deep Dark Purple
+                            light: '#F3E5F5'    // Very light purple tint
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'spin-slow': 'spin 3s linear infinite',
+                        'typewriter': 'typewriter 2s steps(40) 1s 1 normal both, blinkTextCursor 500ms steps(40) infinite normal',
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            'from': { boxShadow: '0 0 10px #FFD700' },
+                            'to': { boxShadow: '0 0 20px #FFD700, 0 0 30px #FDBA74' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-/* --- Stacked Cards Section Styles --- */
-
-.feature-section {
-    background: radial-gradient(circle at center, #1a3a6c 0%, #051626 100%);
-    padding: 80px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    /* Font family fallback in case your site doesn't use Poppins */
-    font-family: 'Poppins', sans-serif; 
-}
-
-.header-content {
-    text-align: center;
-    max-width: 800px;
-    margin-bottom: 50px;
-}
-
-.sub-title {
-    color: #aab8c5;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.main-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1.3;
-    margin: 0 0 25px 0;
-}
-
-.highlight-gold {
-    color: #FFD700;
-}
-
-.feature-checks {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.check-item {
-    font-size: 1.1rem;
-}
-
-.check-item i {
-    color: #25D366;
-    margin-right: 8px;
-}
-
-.cards-stack-container {
-    width: 100%;
-    max-width: 750px;
-    position: relative;
-    padding-bottom: 50px; 
-}
-
-.glass-card {
-    display: flex;
-    align-items: center;
-    padding: 20px 25px;
-    border-radius: 20px;
-    margin-bottom: 0; 
-    color: white;
-    transition: transform 0.3s ease;
-    background: linear-gradient(145deg, rgba(40, 90, 200, 0.5) 0%, rgba(20, 40, 120, 0.7) 100%);
-    border: 1px solid rgba(100, 180, 255, 0.3);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    position: relative;
-}
-
-/* THE STACKING MAGIC: Negative margin on all except the first card */
-.glass-card:not(:first-child) {
-    margin-top: -45px; 
-}
-
-.glass-card:hover {
-    transform: translateY(-5px); /* Optional: slight lift on hover */
-    z-index: 10 !important; /* Bring to front on hover */
-}
-
-.card-icon-box {
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.card-content h3 {
-    margin: 0;
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.card-content p {
-    display: none;
-    margin-top: 10px;
-    color: #d0e0f0;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-/* Expanded Card Styles */
-.glass-card.expanded-card {
-    align-items: flex-start;
-    padding-bottom: 40px;
-     background: linear-gradient(145deg, rgba(50, 100, 220, 0.6) 0%, rgba(25, 50, 140, 0.8) 100%);
-}
-
-.glass-card.expanded-card .card-content p {
-    display: block;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-    .main-title { font-size: 1.8rem; }
-    .feature-checks { flex-direction: column; gap: 10px; align-items: center;}
-    .glass-card { padding: 15px; }
-    .card-icon-box { width: 40px; height: 40px; font-size: 1.2rem; margin-right: 15px; }
-    .card-content h3 { font-size: 1.1rem; }
-}
-
-
-        /* --- CSS VARIABLES & RESET --- */
-        :root {
-            --primary-color: #2b0c52; /* Deep Purple/Blue */
-            --secondary-color: #6c63ff; /* Vivid Purple/Blue */
-            --accent-color: #ffb703; /* Gold/Yellow for CTA/Stars */
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --white: #ffffff;
-            --bg-light: #f9fafb;
-            --success: #10b981;
-            --transition: all 0.3s ease;
-        }
-        header {
-  background: #ffffff;
-}
-.compliance-bar {
-  background: #f6f8fc;
-  border-bottom: 1px solid #e2e6ef;
-  padding: 8px 0;
-}
-
-.compliance-container {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  color: #444;
-}
-
-.compliance-container .badge {
-  font-weight: 500;
-  letter-spacing: 0.4px;
-}
-
-.compliance-container .divider {
-  color: #aaa;
-}
-@media (max-width: 600px) {
-  .compliance-container {
-    flex-wrap: wrap;
-    gap: 8px;
-    font-size: 13px;
-  }
-
-  .compliance-container .divider {
-    display: none;
-  }
-}
-.compliance-container .badge {
-  background: #ffffff;
-  padding: 4px 10px;
-  border-radius: 20px;
-  border: 1px solid #dfe3eb;
-}
-
-.nav-container {
-  display: flex;
-  align-items: center;     /* vertical center */
-  justify-content: space-between;
-  height: 70px;            /* fixed clean header height */
-  padding: 0 20px;
-}
-
-.logo img {
-  height: 150px;            /* 👈 KEY FIX */
-  width: auto;
-  object-fit: contain;
-}
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* Custom Styles */
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, .font-display {
+            font-family: 'Montserrat', sans-serif;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* --- UTILITIES --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section-padding {
-            padding: 80px 0;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            box-shadow: 0 4px 14px rgba(108, 99, 255, 0.4);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--white);
-            color: var(--primary-color);
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: var(--white);
-            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
-            transform: translateY(-2px);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .section-subtitle {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-        }
-
-        /* --- HEADER & NAV --- */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Using a CSS shape for logo placeholder if image fails */
-        .logo-icon {
-            color: var(--secondary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: var(--text-dark);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary-color);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        /* Decorative Background Circles */
-        .circle {
-            position: absolute;
-            border-radius: 50%;
+        .glass-panel {
             background: rgba(255, 255, 255, 0.1);
-        }
-        .c1 { width: 300px; height: 300px; top: -100px; left: -100px; }
-        .c2 { width: 200px; height: 200px; bottom: 50px; right: -50px; }
-
-        /* --- ABOUT SECTION --- */
-        .about-section {
-            background-color: var(--bg-light);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+        .credential-badge {
+            transition: all 0.3s ease;
+        }
+        .credential-badge:hover {
+            transform: translateY(-5px);
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
         }
 
-        .about-text h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: var(--text-light);
-        }
-
-        .about-image {
-            background-color: #ddd; /* Placeholder color */
+        /* Moon Shape Background */
+        .moon-bg {
+            position: absolute;
+            width: 300px;
             height: 300px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* --- CATEGORIES SECTION --- */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .category-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: var(--transition);
-            border: 1px solid #eee;
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-color: var(--secondary-color);
-        }
-
-        .cat-icon {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-
-        .category-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .category-card .btn-small {
-            font-size: 0.9rem;
-            color: var(--secondary-color);
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        
-
-        /* --- HOW IT WORKS --- */
-        .steps-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .step-item {
-            flex: 1;
-            min-width: 280px;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background-color: var(--secondary-color);
-            color: var(--white);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 0 auto 20px;
+            background: radial-gradient(circle at 30% 30%, #FFD700, #F57C00);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.4);
+            z-index: 0;
+            opacity: 0.1;
         }
 
-        .step-item h3 {
-            margin-bottom: 10px;
+        /* Hero Gradient Background */
+        .hero-gradient {
+            background: linear-gradient(135deg, #4A148C 0%, #7B1FA2 50%, #9C27B0 100%);
         }
 
-        /* --- PRICING --- */
-        .pricing-section {
-            background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9C27B0;
+            border-radius: 5px;
         }
 
-        .pricing-card {
-            background: var(--white);
-            max-width: 500px;
-            margin: 0 auto;
-            border-radius: 20px;
-            padding: 50px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            text-align: center;
-            border-top: 5px solid var(--secondary-color);
-        }
-
-        .price {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            margin: 20px 0;
-        }
-        
-        .price span {
-            font-size: 1.5rem;
-            color: var(--text-light);
-            font-weight: 400;
-        }
-
-        .features-list {
-            margin: 30px 0;
-            text-align: left;
+        /* Preloader Styles */
+        .loader-ring {
             display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        .loader-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border: 8px solid #FFD700;
+            border-radius: 50%;
+            animation: loader-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #FFD700 transparent transparent transparent;
+        }
+        .loader-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+        .loader-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+        .loader-ring div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+        @keyframes loader-ring {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .features-list li {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+        /* Text Reveal Animation */
+        .text-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
-        .features-list i {
-            color: var(--success);
-            margin-right: 10px;
-        }
-
-        /* --- WHY CHOOSE US --- */
-        .why-us-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-        }
-
-        .why-card {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .why-card i {
-            font-size: 3rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-        }
-
-        /* --- CTA SECTION --- */
-        .cta-section {
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-align: center;
-            border-radius: 20px;
-            margin: 40px 20px;
-            padding: 60px 20px;
-        }
-
-        .cta-section h2 {
-            margin-bottom: 20px;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #111;
-            color: #aaa;
-            padding: 40px 0;
-            font-size: 0.9rem;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .social-links a {
-            margin-left: 15px;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            color: var(--white);
-        }
-
-        /* --- RESPONSIVE MEDIA QUERIES --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-                display: none; /* Hidden by default */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            .nav-links.active { display: flex; }
-            .mobile-menu-btn { display: block; }
-            .about-grid { grid-template-columns: 1fr; }
-            .about-image { order: -1; }
-            .section-title { font-size: 2rem; }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.6s; }
+        .delay-3 { animation-delay: 1s; }
+
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800">
 
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                 <img src="logo.png"> 
-                
-            </a>
-            
-            <nav>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#categories">Assessments</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="https://wa.me/919562044735" class="btn btn-primary" style="padding: 8px 20px;">Contact Us</a></li>
-                </ul>
-            </nav>
+    <!-- Preloader Animation -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-brand-dark flex flex-col items-center justify-center transition-opacity duration-700">
+        <div class="loader-ring mb-4"><div></div><div></div><div></div><div></div></div>
+        <div class="flex items-center gap-2 animate-pulse">
+            <i class="fas fa-moon text-brand-accent text-3xl"></i>
+            <span class="font-display font-bold text-2xl text-white tracking-widest">SKILLMOON</span>
+        </div>
+        <p class="text-brand-secondary text-sm mt-2 tracking-wide">Validating Excellence...</p>
+    </div>
 
-            <div class="mobile-menu-btn" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-purple-100 shadow-md transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                   <header><img src="logo.png" alt="Company Logo" style="height:150px;"></header>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8 items-center">
+                    <a href="#home" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">Home</a>
+                    <a href="#about" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">About</a>
+                    <a href="#why-skillmoon" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">Why SkillMoon</a>
+                    <a href="#assessments" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">Tests</a>
+                    <a href="#pricing" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">Pricing</a>
+                    <a href="#contact" class="bg-gradient-to-r from-brand-primary to-brand-secondary text-white px-6 py-2.5 rounded-full font-bold transition shadow-lg hover:shadow-purple-500/50 transform hover:-translate-y-0.5 hover:ring-2 hover:ring-offset-2 hover:ring-brand-primary">
+                        Start Assessment
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-primary focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </header>
-    <!-- Compliance / Certification Bar -->
-<section class="compliance-bar">
-  <div class="compliance-container">
-    <span class="badge">ISO Certified</span>
-    <span class="divider">|</span>
-    <span class="badge">IAF Accredited</span>
-    <span class="divider">|</span>
-    <span class="badge">MSME Registered</span>
-  </div>
-</section>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-purple-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary" onclick="toggleMenu()">Home</a>
+                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary" onclick="toggleMenu()">About</a>
+                <a href="#why-skillmoon" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary" onclick="toggleMenu()">Why SkillMoon</a>
+                <a href="#assessments" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary" onclick="toggleMenu()">Assessments</a>
+                <a href="#pricing" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary" onclick="toggleMenu()">Pricing</a>
+                <a href="#contact" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-bold bg-brand-primary text-white" onclick="toggleMenu()">Contact Us</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="circle c1"></div>
-        <div class="circle c2"></div>
-        <div class="container hero-content">
-            <h1> Prove Your Skills.<br>Get Certified.</h1>
-            <p>Take industry-standard assessment tests, validate your knowledge, and boost your career with SkillMoon certification.</p>
-            <a href="#categories" class="btn btn-primary">Start Assessment</a>
-            <a href="#pricing" class="btn btn-outline" style="margin-left: 10px;">View Pricing</a>
+    <section id="home" class="relative pt-32 pb-10 lg:pt-48 lg:pb-24 overflow-hidden hero-gradient text-white">
+        <!-- Background Animations -->
+        <div class="moon-bg top-10 right-10 animate-float"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/20 to-transparent"></div>
+        
+        <!-- Animated Particles/Stars (Simplified) -->
+        <div class="absolute top-1/4 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+        <div class="absolute top-1/3 right-1/4 w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-75"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <div class="inline-block px-4 py-1.5 mb-6 border border-brand-accent/50 rounded-full bg-brand-accent/10 backdrop-blur-sm text-reveal delay-1">
+                <span class="text-brand-accent text-sm font-bold tracking-wide uppercase"><i class="fas fa-star mr-2"></i>Global Standard Certification</span>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight text-reveal delay-2">
+                Validate Your Skills.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-purple-200">Prove Your Worth.</span>
+            </h1>
+
+            <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed text-reveal delay-3">
+                International assessment agency for professionals. Get certified in Excel, Digital Marketing, HR, and more.
+            </p>
+
+            <!-- CREDENTIALS STRIP -->
+            <div class="max-w-4xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="400">
+                <div class="glass-panel rounded-2xl p-4 md:p-6 flex flex-wrap justify-center items-center gap-4 md:gap-8 shadow-2xl shadow-purple-900/50 hover:bg-white/5 transition duration-300">
+                    <div class="flex items-center gap-2 credential-badge">
+                        <i class="fas fa-globe text-brand-accent text-xl"></i>
+                        <span class="font-bold text-white text-sm md:text-lg">International Certification</span>
+                    </div>
+                    <div class="hidden md:block w-px h-8 bg-white/20"></div>
+                    <div class="flex items-center gap-2 credential-badge">
+                        <i class="fas fa-certificate text-brand-accent text-xl"></i>
+                        <span class="font-bold text-white text-sm md:text-lg">ISO Affiliated</span>
+                    </div>
+                    <div class="hidden md:block w-px h-8 bg-white/20"></div>
+                    <div class="flex items-center gap-2 credential-badge">
+                        <i class="fas fa-award text-brand-accent text-xl"></i>
+                        <span class="font-bold text-white text-sm md:text-lg">IAF Affiliated</span>
+                    </div>
+                    <div class="hidden md:block w-px h-8 bg-white/20"></div>
+                    <div class="flex items-center gap-2 credential-badge">
+                        <i class="fas fa-building text-brand-accent text-xl"></i>
+                        <span class="font-bold text-white text-sm md:text-lg">MSME Registered</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="500">
+                <a href="#assessments" class="bg-brand-accent text-brand-dark px-8 py-4 rounded-full font-extrabold text-lg transition hover:bg-yellow-300 shadow-[0_0_20px_rgba(251,191,36,0.5)] flex items-center justify-center gap-2 animate-glow hover:scale-105 transform">
+                    View Tests <i class="fas fa-chevron-down"></i>
+                </a>
+                <button onclick="openWhatsapp('Hello SkillMoon, I want to know more about your certifications.')" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-brand-primary px-8 py-4 rounded-full font-bold text-lg transition flex items-center justify-center gap-2 hover:scale-105 transform">
+                    <i class="fab fa-whatsapp"></i> Chat with Us
+                </button>
+            </div>
+        </div>
+        
+        <!-- Wave Separator -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-16 fill-white">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
         </div>
     </section>
-    
 
     <!-- About Section -->
-    <section id="about" class="section-padding about-section">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2>Empowering Your Career Growth</h2>
-                    <p>SkillMoon is a premier online skill assessment platform designed to help professionals and students validate their expertise.</p>
-                    <p>In today's competitive job market, a resume isn't enough. Employers need proof. Our rigorously designed tests cover a wide range of domains from HR to Data Analytics.</p>
-                    <p><strong>Take the test, pass the assessment, and earn a verifiable certificate to showcase on LinkedIn and your CV.</strong></p>
-                    <a href="#why-us" style="color: var(--secondary-color); font-weight: 600;">Learn more about our process &rarr;</a>
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-brand-primary font-bold tracking-wide uppercase mb-3 text-sm">Who We Are</h2>
+                    <h3 class="text-4xl font-display font-bold text-slate-900 mb-6">Empowering Careers Globally</h3>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                        SkillMoon International is not just a testing agency; we are your gateway to global recognition. In a competitive job market, your skills need proof. We provide that proof through rigorous, internationally accredited assessments.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                        <div class="flex items-center gap-4 p-4 bg-brand-light rounded-xl border border-purple-100 hover:shadow-md transition group">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-primary shadow-sm group-hover:bg-brand-primary group-hover:text-white transition">
+                                <i class="fas fa-certificate text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">ISO Certified</h4>
+                                <p class="text-xs text-slate-500">Quality Assured</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-brand-light rounded-xl border border-purple-100 hover:shadow-md transition group">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-primary shadow-sm group-hover:bg-brand-primary group-hover:text-white transition">
+                                <i class="fas fa-globe-asia text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">International</h4>
+                                <p class="text-xs text-slate-500">Valid Worldwide</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-image">
-                    <!-- Placeholder text inside the image div -->
-                    <span style="font-size: 1.5rem; font-weight: bold; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Unlock Your Potential</span>
-                </div>
-            </div>
-        </div>
-    </section>
-     <div id="contact" class="container">
-        <section class="cta-section">
-            <h2>Ready to Prove Your Skills?</h2>
-            <p style="margin-bottom: 30px; font-size: 1.2rem;">Join hundreds of professionals getting certified with SkillMoon.</p>
-            <a href="https://wa.me/919562044735" target="_blank" class="btn btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-            </a>
-        </section>
-    </div>
-
-
-    <!-- Assessment Categories -->
-    <section id="categories" class="section-padding">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Assessment Categories</h2>
-                <p class="section-subtitle">Choose your domain and start your certification journey.</p>
-            </div>
-
-            <div class="categories-grid">
-                <!-- HR -->
-                <div class="category-card">
-                    <i class="fas fa-users-cog cat-icon"></i>
-                    <h3>HR Management</h3>
-                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20HR%20Management%20Assessment" class="btn-small">Take Test &rarr;</a>
-                </div>
-                <!-- Accounting -->
-                <div class="category-card">
-                    <i class="fas fa-calculator cat-icon"></i>
-                    <h3>Accounting</h3>
-                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Accounting%20Assessment" class="btn-small">Take Test &rarr;</a>
-                </div>
-                <!-- Digital Marketing -->
-                <div class="category-card">
-                    <i class="fas fa-bullhorn cat-icon"></i>
-                    <h3>Digital Marketing</h3>
-                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Digital%20Marketing%20Assessment" class="btn-small">Take Test &rarr;</a>
-                </div>
-                <!-- Office Admin -->
-                <div class="category-card">
-                    <i class="fas fa-building cat-icon"></i>
-                    <h3>Office Administration</h3>
-                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Office%20Admin%20Assessment" class="btn-small">Take Test &rarr;</a>
-                </div>
-                <!-- Business Admin -->
-                <div class="category-card">
-                    <i class="fas fa-briefcase cat-icon"></i>
-                    <h3>Business Admin</h3>
-                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Business%20Admin%20Assessment" class="btn-small">Take Test &rarr;</a>
-                </div>
-                <!-- Data Analytics -->
-                <div class="category-card">
-                    <i class="fas fa-chart-line cat-icon"></i>
-                    <h3>Data Analytics</h3>
-                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Data%20Analytics%20Assessment" class="btn-small">Take Test &rarr;</a>
-                </div>
-                <!-- Graphic Design -->
-                <div class="category-card">
-                    <i class="fas fa-pen-nib cat-icon"></i>
-                    <h3>Graphic Designing</h3>
-                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20Graphic%20Design%20Assessment" class="btn-small">Take Test &rarr;</a>
-                </div>
-                <!-- Excel -->
-                <div class="category-card">
-                    <i class="fas fa-file-excel cat-icon"></i>
-                    <h3>MS Excel & Tools</h3>
-                    <a href="https://wa.me/919562044735?text=I'm%20interested%20in%20MS%20Excel%20Assessment" class="btn-small">Take Test &rarr;</a>
+                <div class="relative" data-aos="fade-left">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-brand-accent to-brand-primary rounded-2xl blur-lg opacity-30 animate-pulse"></div>
+                    <div class="relative bg-white p-2 rounded-2xl shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Assessment" class="rounded-xl w-full object-cover h-80 lg:h-96 hover:scale-[1.02] transition duration-500">
+                        <div class="absolute bottom-6 right-6 bg-white p-4 rounded-xl shadow-lg flex items-center gap-3 animate-float">
+                            <div class="text-3xl font-bold text-brand-primary">10k+</div>
+                            <div class="text-sm font-semibold text-slate-600 leading-tight">Certified<br>Professionals</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-<section class="feature-section">
-    
-    <div class="header-content">
-        <span class="sub-title">Why Pick LearnTube?</span>
-        <h1 class="main-title">
-            Get Personalised Learning To <br>
-            <span class="highlight-gold">Super-Charge Your Career</span> With:
-        </h1>
-        
-        <div class="feature-checks">
-            <div class="check-item"><i class="fas fa-check"></i> Courses</div>
-            <div class="check-item"><i class="fas fa-check"></i> Certifications</div>
-            <div class="check-item"><i class="fas fa-check"></i> Career Opportunities</div>
-        </div>
-    </div>
 
-    
-</section>
-    <!-- How It Works -->
-    <section class="section-padding" style="background-color: var(--white);">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-subtitle">Get certified in 3 simple steps.</p>
+    <!-- NEW SECTION: Why SkillMoon -->
+    <section id="why-skillmoon" class="py-24 bg-brand-light relative">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-purple-50 skew-x-12 opacity-50 -z-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-brand-primary font-bold tracking-wider uppercase">Our Advantage</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-dark mt-2 mb-4">Why Choose SkillMoon?</h2>
+                <div class="w-24 h-1.5 bg-brand-accent mx-auto rounded-full"></div>
             </div>
-            <div class="steps-container">
-                <div class="step-item">
-                    <div class="step-number">1</div>
-                    <h3>Choose Skill</h3>
-                    <p>Select your area of expertise from our list of assessments.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 text-center hover:transform hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-2xl">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-slate-900">Global Recognition</h3>
+                    <p class="text-slate-600 text-sm">Your certificate is valid across borders, opening international career opportunities.</p>
                 </div>
-                <div class="step-item">
-                    <div class="step-number">2</div>
-                    <h3>Take Assessment</h3>
-                    <p>Complete the online test. Questions are practical & industry-relevant.</p>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 text-center hover:transform hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-2xl">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-slate-900">Instant Results</h3>
+                    <p class="text-slate-600 text-sm">Get your score immediately after completing the assessment. No waiting time.</p>
                 </div>
-                <div class="step-item">
-                    <div class="step-number">3</div>
-                    <h3>Unlock Certificate</h3>
-                    <p>Pass the test and receive your verified SkillMoon Certificate instantly.</p>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 text-center hover:transform hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-2xl">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-slate-900">Digital Badges</h3>
+                    <p class="text-slate-600 text-sm">Shareable digital badges for LinkedIn and resumes that can be verified online.</p>
                 </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 text-center hover:transform hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-2xl">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-slate-900">Secure Testing</h3>
+                    <p class="text-slate-600 text-sm">Our AI-proctored environment ensures the highest standards of integrity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Tests Section -->
+    <section id="assessments" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-brand-primary font-bold tracking-wider uppercase">Our Tests</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-dark mt-2 mb-4">Choose Your Assessment</h2>
+                <div class="w-24 h-1.5 bg-brand-accent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-brand-primary group border border-slate-100" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-primary transition-colors duration-300">
+                        <i class="fas fa-users text-3xl text-brand-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">HR Management</h3>
+                    <p class="text-slate-500 mb-6 text-sm">Validate your skills in recruitment, employee relations, and organizational structure.</p>
+                    <button onclick="openWhatsapp('I am interested in the HR Management Assessment.')" class="w-full py-3 border-2 border-brand-primary text-brand-primary font-bold rounded-lg hover:bg-brand-primary hover:text-white transition">Book Now</button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-brand-accent group border border-slate-100" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-accent transition-colors duration-300">
+                        <i class="fas fa-bullhorn text-3xl text-yellow-600 group-hover:text-brand-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Digital Marketing</h3>
+                    <p class="text-slate-500 mb-6 text-sm">Prove your expertise in SEO, Social Media, Content Strategy, and Analytics.</p>
+                    <button onclick="openWhatsapp('I am interested in the Digital Marketing Assessment.')" class="w-full py-3 border-2 border-brand-accent text-brand-dark font-bold rounded-lg hover:bg-brand-accent transition">Book Now</button>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-brand-primary group border border-slate-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-primary transition-colors duration-300">
+                        <i class="fas fa-chart-line text-3xl text-brand-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Data Analytics</h3>
+                    <p class="text-slate-500 mb-6 text-sm">Showcase your ability to interpret data, visualize trends, and drive decisions.</p>
+                    <button onclick="openWhatsapp('I am interested in the Data Analytics Assessment.')" class="w-full py-3 border-2 border-brand-primary text-brand-primary font-bold rounded-lg hover:bg-brand-primary hover:text-white transition">Book Now</button>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-brand-primary group border border-slate-100" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-primary transition-colors duration-300">
+                        <i class="fas fa-building text-3xl text-brand-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Office Administration</h3>
+                    <p class="text-slate-500 mb-6 text-sm">Certification for front desk operations, scheduling, and office management.</p>
+                    <button onclick="openWhatsapp('I am interested in the Office Administration Assessment.')" class="w-full py-3 border-2 border-brand-primary text-brand-primary font-bold rounded-lg hover:bg-brand-primary hover:text-white transition">Book Now</button>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-green-500 group border border-slate-100" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-500 transition-colors duration-300">
+                        <i class="fas fa-file-excel text-3xl text-green-600 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Advanced Excel</h3>
+                    <p class="text-slate-500 mb-6 text-sm">Master VLOOKUP, Pivot Tables, and macros. Essential for every corporate job.</p>
+                    <button onclick="openWhatsapp('I am interested in the Excel Assessment.')" class="w-full py-3 border-2 border-green-500 text-green-600 font-bold rounded-lg hover:bg-green-500 hover:text-white transition">Book Now</button>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-blue-500 group border border-slate-100" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500 transition-colors duration-300">
+                        <i class="fas fa-file-word text-3xl text-blue-600 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Microsoft Word</h3>
+                    <p class="text-slate-500 mb-6 text-sm">Certification in document creation, formatting, and professional reporting.</p>
+                    <button onclick="openWhatsapp('I am interested in the Microsoft Word Assessment.')" class="w-full py-3 border-2 border-blue-500 text-blue-600 font-bold rounded-lg hover:bg-blue-500 hover:text-white transition">Book Now</button>
+                </div>
+
+            </div>
+            
+            <div class="text-center mt-12">
+                 <button onclick="openWhatsapp('I want to know about other available assessments.')" class="text-slate-500 font-semibold hover:text-brand-primary transition">See More Assessments <i class="fas fa-arrow-right ml-1"></i></button>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="section-padding pricing-section">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Simple Pricing</h2>
-                <p class="section-subtitle">Invest in your career for a nominal fee.</p>
-            </div>
+    <section id="pricing" class="py-20 bg-brand-dark text-white relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-accent rounded-full blur-3xl opacity-20 animate-pulse"></div>
+        <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-secondary rounded-full blur-3xl opacity-20"></div>
 
-            <div class="pricing-card">
-                <h3>Standard Certification</h3>
-                <div class="price">₹499 <span>/ assessment</span></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center" data-aos="zoom-in">
+            <h2 class="text-3xl font-bold mb-8">Transparent Pricing</h2>
+            
+            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-brand-accent/30 rounded-3xl p-8 md:p-12 relative hover:scale-105 transition duration-500">
+                <div class="absolute top-0 right-0 bg-brand-accent text-brand-dark font-bold text-xs uppercase px-3 py-1 rounded-bl-xl rounded-tr-2xl">Limited Time Offer</div>
                 
-                <ul class="features-list">
-                    <li><i class="fas fa-check-circle"></i> Online Skill Assessment</li>
-                    <li><i class="fas fa-check-circle"></i> Instant Score Evaluation</li>
-                    <li><i class="fas fa-check-circle"></i> Verified Digital Certificate</li>
-                    <li><i class="fas fa-check-circle"></i> Lifetime Certificate Validity</li>
-                    <li><i class="fas fa-check-circle"></i> Job-Ready Skill Validation</li>
+                <h3 class="text-2xl mb-4 text-slate-200">Certification Cost</h3>
+                <div class="flex justify-center items-end gap-2 mb-6">
+                    <span class="text-6xl font-display font-bold text-brand-accent">₹499</span>
+                    <span class="text-xl text-slate-400 mb-2">/ assessment</span>
+                </div>
+                
+                <ul class="text-left max-w-xs mx-auto space-y-3 mb-8 text-slate-300">
+                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Valid Worldwide</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Instant Digital Certificate</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> ISO Accredited Badge</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Verifiable Online</li>
                 </ul>
 
-                <a href="https://wa.me/919562044735" class="btn btn-primary" style="width: 100%;" target="_blank">Get Certified Now</a>
+                <button onclick="openWhatsapp('I want to book an assessment for Rs 499.')" class="w-full md:w-auto px-10 py-4 bg-brand-accent hover:bg-yellow-300 text-brand-dark font-bold rounded-full transition shadow-[0_0_20px_rgba(251,191,36,0.4)] animate-pulse hover:scale-105 transform">
+                    Get Certified Now
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us -->
-    <section id="why-us" class="section-padding">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Why SkillMoon?</h2>
-                <p class="section-subtitle">We are dedicated to your professional growth.</p>
+    <!-- Contact & Enquiry Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-slate-900">Start Your Journey</h2>
+                <p class="text-slate-500 mt-2">Fill the form or contact us directly.</p>
             </div>
-            <div class="why-us-grid">
-                <div class="why-card">
-                    <i class="fas fa-certificate"></i>
-                    <h3>Recognized</h3>
-                    <p>Certificates that add value to your resume.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
+                
+                <!-- Contact Info Side -->
+                <div class="bg-brand-primary p-10 text-white flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -mr-10 -mt-10 animate-pulse"></div>
+                    <div class="absolute bottom-0 left-0 w-40 h-40 bg-brand-accent opacity-10 rounded-full -ml-10 -mb-10"></div>
+                    
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4 group cursor-pointer hover:translate-x-2 transition">
+                                <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                                    <i class="fab fa-whatsapp text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-purple-200 text-sm">WhatsApp / Call</p>
+                                    <p class="font-bold text-lg">+91 9562044735</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4 group cursor-pointer hover:translate-x-2 transition">
+                                <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-purple-200 text-sm">Email Support</p>
+                                    <p class="font-bold text-lg break-all">info@skillmooninternational.com</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 pt-8 border-t border-white/20">
+                                <h4 class="font-bold mb-4">Accreditations</h4>
+                                <div class="flex gap-4">
+                                    <span class="bg-white/10 px-3 py-1 rounded text-sm border border-white/20 hover:bg-white/20 transition">ISO</span>
+                                    <span class="bg-white/10 px-3 py-1 rounded text-sm border border-white/20 hover:bg-white/20 transition">IAF</span>
+                                    <span class="bg-white/10 px-3 py-1 rounded text-sm border border-white/20 hover:bg-white/20 transition">MSME</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="why-card">
-                    <i class="fas fa-wallet"></i>
-                    <h3>Affordable</h3>
-                    <p>Premium assessment at a student-friendly price.</p>
-                </div>
-                <div class="why-card">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3>Flexible</h3>
-                    <p>Take the test online, anytime, anywhere.</p>
-                </div>
-                <div class="why-card">
-                    <i class="fas fa-rocket"></i>
-                    <h3>Career Boost</h3>
-                    <p>Prove your skills to potential employers.</p>
+
+                <!-- Enquiry Form Side -->
+                <div class="p-10">
+                    <form onsubmit="event.preventDefault(); sendEnquiry();">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+                                <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition" placeholder="WhatsApp Number">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Interested Assessment</label>
+                                <select id="course" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition">
+                                    <option>Select an option</option>
+                                    <option>HR Management</option>
+                                    <option>Digital Marketing</option>
+                                    <option>Data Analytics</option>
+                                    <option>Excel / Word</option>
+                                    <option>Office Admin</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-primary hover:bg-brand-secondary text-white font-bold py-3.5 rounded-lg transition shadow-lg mt-2 hover:shadow-xl transform hover:-translate-y-1">
+                                Send Enquiry
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Call to Action -->
-    <div id="contact" class="container">
-        <section class="cta-section">
-            <h2>Ready to Prove Your Skills?</h2>
-            <p style="margin-bottom: 30px; font-size: 1.2rem;">Join hundreds of professionals getting certified with SkillMoon.</p>
-            <a href="https://wa.me/919562044735" target="_blank" class="btn btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-            </a>
-        </section>
-    </div>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3 style="color: var(--white); margin-bottom: 10px;">SkillMoon</h3>
-                    <p>Your partner in skill assessment and career growth.</p>
+    <footer class="bg-brand-dark text-slate-400 py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-6 md:mb-0">
+                    <span class="font-display font-bold text-2xl text-white">Skill<span class="text-brand-accent">Moon</span></span>
+                    <p class="mt-2 text-sm max-w-xs mx-auto md:mx-0">Validating potential, certifying excellence. The global standard for professional assessments.</p>
                 </div>
-                
-                <div class="social-links">
-                    <a href="https://wa.me/91XXXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-brand-accent transition hover:scale-110 transform"><i class="fab fa-facebook text-xl"></i></a>
+                    <a href="#" class="hover:text-brand-accent transition hover:scale-110 transform"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="hover:text-brand-accent transition hover:scale-110 transform"><i class="fab fa-linkedin text-xl"></i></a>
                 </div>
             </div>
-            <div style="border-top: 1px solid #333; margin-top: 20px; padding-top: 20px; text-align: center;">
-                <p>&copy; <span id="year"></span> SkillMoon International. All Rights Reserved.</p>
+            <div class="mt-8 pt-8 border-t border-white/10 text-sm text-center">
+                &copy; <span id="year"></span> SkillMoon International. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Fixed Floating WhatsApp Button -->
+    <a href="javascript:openWhatsapp('Hello SkillMoon, I need assistance.')" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.5)] transition transform hover:scale-110 flex items-center justify-center group animate-bounce">
+        <i class="fab fa-whatsapp text-3xl"></i>
+        <span class="absolute right-full mr-4 bg-white text-slate-800 px-3 py-1 rounded shadow-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition whitespace-nowrap hidden md:block">Chat Now</span>
+    </a>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Update Copyright Year automaticall
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
+
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Mobile Menu Toggle
+        // Loading Screen Logic
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 700);
+            }, 1800); // 1.8s delay to show off animation
+        });
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+
         function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.innerHTML = '<i class="fas fa-times text-2xl text-brand-primary"></i>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuBtn.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            }
         }
 
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('active');
-            });
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // WhatsApp Logic
+        function openWhatsapp(message) {
+            const number = "919562044735";
+            const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Enquiry Form Logic (Simulated)
+        function sendEnquiry() {
+            const name = document.getElementById('name').value;
+            const course = document.getElementById('course').value;
+            
+            if(!name) return alert("Please enter your name");
+
+            const msg = `Hi SkillMoon, My name is ${name}. I would like to enquire about ${course}.`;
+            openWhatsapp(msg);
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md', 'py-0');
+            } else {
+                navbar.classList.remove('shadow-md', 'py-2');
+            }
         });
     </script>
-
 </body>
-
 </html>
-
-
