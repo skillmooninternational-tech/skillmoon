@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Assessment Test | SkillMoon International</title>
+    <meta name="description" content="Take the SkillMoon International HR Assessment Test. Validate your Human Resource Management skills.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#9C27B0', 
+                            secondary: '#BA68C8',
+                            accent: '#FFD700',
+                            dark: '#4A148C',
+                            light: '#F3E5F5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'spin-slow': 'spin 3s linear infinite',
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            'from': { boxShadow: '0 0 10px #FFD700' },
+                            'to': { boxShadow: '0 0 20px #FFD700, 0 0 30px #FDBA74' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, .font-display {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #4A148C 0%, #7B1FA2 50%, #9C27B0 100%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9C27B0;
+            border-radius: 5px;
+        }
+
+        /* Preloader Styles */
+        .loader-ring {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        .loader-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border: 8px solid #FFD700;
+            border-radius: 50%;
+            animation: loader-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #FFD700 transparent transparent transparent;
+        }
+        .loader-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+        .loader-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+        .loader-ring div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+        @keyframes loader-ring {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Preloader Animation -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-brand-dark flex flex-col items-center justify-center transition-opacity duration-700">
+        <div class="loader-ring mb-4"><div></div><div></div><div></div><div></div></div>
+        <div class="flex items-center gap-2 animate-pulse">
+            <i class="fas fa-moon text-brand-accent text-3xl"></i>
+            <span class="font-display font-bold text-2xl text-white tracking-widest">SKILLMOON</span>
+        </div>
+        <p class="text-brand-secondary text-sm mt-2 tracking-wide">Loading Assessment...</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-purple-100 shadow-md transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                    <!-- Using Icon/Text fallback if logo.png is missing in this new context, swap back to img if preferred -->
+                    <i class="fas fa-moon text-brand-primary text-3xl"></i>
+                    <span class="font-display font-bold text-2xl text-slate-800 tracking-tight">Skill<span class="text-brand-primary">Moon</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8 items-center">
+                    <a href="index.html" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">Home</a>
+                    <a href="index.html#about" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">About</a>
+                    <a href="index.html#assessments" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">Tests</a>
+                    <a href="index.html#pricing" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">Pricing</a>
+                    <span class="bg-brand-primary text-white px-6 py-2.5 rounded-full font-bold shadow-lg cursor-default">
+                        HR Assessment
+                    </span>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-primary focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-purple-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary">Home</a>
+                <a href="index.html#assessments" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary">All Tests</a>
+                <a href="#" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-bold bg-brand-primary text-white">HR Assessment</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="hero-gradient pt-32 pb-16 text-white text-center relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -mr-16 -mt-16"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-brand-accent opacity-10 rounded-full blur-2xl -ml-10 -mb-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-10" data-aos="fade-down">
+            <h1 class="text-3xl md:text-5xl font-extrabold font-display mb-4">HR Assessment Test</h1>
+            <p class="text-purple-200 text-lg max-w-2xl mx-auto">Complete the form below to begin your certification process.</p>
+        </div>
+    </header>
+
+    <!-- Form Section -->
+    <section class="py-12 md:py-16 bg-brand-light relative">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden p-2 md:p-6 border border-purple-100" data-aos="fade-up">
+                
+                <!-- Assessment Info Bar -->
+                <div class="flex flex-wrap gap-4 justify-center mb-8 border-b border-slate-100 pb-6">
+                    <div class="flex items-center gap-2 text-sm md:text-base text-slate-600">
+                        <i class="fas fa-clock text-brand-primary"></i> <span>Duration: <strong>Approx 30 Mins</strong></span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm md:text-base text-slate-600">
+                        <i class="fas fa-list-check text-brand-primary"></i> <span>Questions: <strong>Multiple Choice</strong></span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm md:text-base text-slate-600">
+                        <i class="fas fa-certificate text-brand-primary"></i> <span>Certification: <strong>ISO Certified</strong></span>
+                    </div>
+                </div>
+
+                <!-- Google Form Embed -->
+                <div class="w-full flex justify-center bg-slate-50 rounded-xl overflow-hidden">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSew55AdLsX7NOa0-R3V13YRQbAayhFxvJhaHXPFZkY5ubdBrQ/viewform?embedded=true" 
+                            width="640" 
+                            height="3080" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0"
+                            class="w-full max-w-[640px]"
+                            title="HR Assessment Form">
+                        Loading…
+                    </iframe>
+                </div>
+                
+                <div class="mt-8 text-center bg-purple-50 p-6 rounded-xl border border-purple-100">
+                    <h3 class="text-lg font-bold text-brand-dark mb-2">Need Assistance?</h3>
+                    <p class="text-slate-600 mb-4">If the form doesn't load or you face any technical issues, please contact our support.</p>
+                    <button onclick="openWhatsapp('I am facing issues with the HR Assessment form.')" class="inline-flex items-center gap-2 text-brand-primary font-bold hover:text-brand-dark transition">
+                        <i class="fab fa-whatsapp text-xl"></i> Contact Support
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-slate-400 py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-6 md:mb-0">
+                    <span class="font-display font-bold text-2xl text-white">Skill<span class="text-brand-accent">Moon</span></span>
+                    <p class="mt-2 text-sm max-w-xs mx-auto md:mx-0">Validating potential, certifying excellence. The global standard for professional assessments.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-brand-accent transition hover:scale-110 transform"><i class="fab fa-facebook text-xl"></i></a>
+                    <a href="#" class="hover:text-brand-accent transition hover:scale-110 transform"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="hover:text-brand-accent transition hover:scale-110 transform"><i class="fab fa-linkedin text-xl"></i></a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-white/10 text-sm text-center">
+                &copy; <span id="year"></span> SkillMoon International. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Floating WhatsApp Button -->
+    <a href="javascript:openWhatsapp('Hello SkillMoon, I need assistance with the assessment.')" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.5)] transition transform hover:scale-110 flex items-center justify-center group">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Loading Screen Logic
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 700);
+            }, 1000); 
+        });
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.innerHTML = '<i class="fas fa-times text-2xl text-brand-primary"></i>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuBtn.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // WhatsApp Logic
+        function openWhatsapp(message) {
+            const number = "919562044735";
+            const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
