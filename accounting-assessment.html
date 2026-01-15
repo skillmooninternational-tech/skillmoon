@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMoon Accounting Assessment</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#305cde',
+                        primaryDark: '#2346b0',
+                        accent: '#eef2ff',
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hidden { display: none !important; }
+        .flex { display: flex !important; }
+        
+        #progress-fill { transition: width 0.5s ease-out; }
+        
+        /* Smooth Fade In */
+        .fade-in { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 via-white to-cyan-50 text-slate-800 font-sans min-h-screen flex flex-col relative">
+
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-slate-100">
+        <div class="max-w-3xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-gradient-to-br from-blue-600 to-indigo-600 text-white p-2 rounded-lg shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-moon text-lg"></i>
+                </div>
+                <h1 class="text-xl font-bold text-slate-900 tracking-tight">SkillMoon <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Assessment</span></h1>
+            </div>
+            <div class="hidden md:flex items-center gap-2 text-[10px] font-bold text-red-600 bg-red-50 px-3 py-1.5 rounded-full border border-red-100 shadow-sm animate-pulse">
+                <div class="w-2 h-2 bg-red-500 rounded-full"></div> 
+                <span id="header-live-count">0</span> Online Now
+            </div>
+        </div>
+        
+        <div id="progress-container" class="hidden w-full bg-slate-200 h-1.5">
+            <div id="progress-fill" class="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 h-1.5 w-0 shadow-[0_0_10px_rgba(79,70,229,0.5)]"></div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-6">
+        <div class="max-w-3xl mx-auto">
+
+            <div id="intro-section" class="fade-in space-y-6">
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+                    <div class="bg-gradient-to-b from-yellow-50 to-white p-2 rounded-xl border border-yellow-200 shadow-sm flex flex-col items-center justify-center hover:-translate-y-1 transition transform duration-300">
+                        <i class="fa-solid fa-certificate text-yellow-600 mb-1 text-xl"></i>
+                        <span class="text-[10px] font-bold text-slate-600">ISO 9001:2015</span>
+                    </div>
+                    <div class="bg-gradient-to-b from-green-50 to-white p-2 rounded-xl border border-green-200 shadow-sm flex flex-col items-center justify-center hover:-translate-y-1 transition transform duration-300">
+                        <i class="fa-solid fa-globe text-green-600 mb-1 text-xl"></i>
+                        <span class="text-[10px] font-bold text-slate-600">IAF Accredited</span>
+                    </div>
+                    <div class="bg-gradient-to-b from-orange-50 to-white p-2 rounded-xl border border-orange-200 shadow-sm flex flex-col items-center justify-center hover:-translate-y-1 transition transform duration-300">
+                        <i class="fa-solid fa-building-columns text-orange-600 mb-1 text-xl"></i>
+                        <span class="text-[10px] font-bold text-slate-600">Govt. Reg MSME</span>
+                    </div>
+                    <div class="bg-gradient-to-b from-rose-50 to-white p-2 rounded-xl border border-rose-200 shadow-sm flex flex-col items-center justify-center hover:-translate-y-1 transition transform duration-300">
+                        <div class="flex items-center gap-1 mb-1">
+                            <i class="fa-solid fa-users text-rose-600"></i>
+                            <span class="text-rose-600 font-bold text-sm" id="live-user-count">24</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-600">Taking Test Now</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl border border-white overflow-hidden relative ring-1 ring-slate-200/60">
+                    <div class="absolute top-0 w-full h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+                    
+                    <div class="p-8 relative z-10">
+                        <div class="text-center mb-8">
+                            <div class="w-16 h-16 bg-gradient-to-br from-indigo-100 to-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 ring-4 ring-white shadow-lg">
+                                <i class="fa-solid fa-file-invoice-dollar text-2xl text-indigo-600"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-900">Accounting Certification</h2>
+                            <p class="text-slate-500 text-sm mt-2">Validate your skills in Tally Prime, GST, and Financial Accounting.</p>
+                        </div>
+
+                        <div class="max-w-md mx-auto space-y-4">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1">Candidate Name</label>
+                                <div class="relative group">
+                                    <i class="fa-solid fa-user absolute left-3 top-3.5 text-slate-400 group-focus-within:text-indigo-500 transition text-sm"></i>
+                                    <input type="text" id="candidateName" placeholder="Enter Full Name" class="w-full pl-9 p-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-slate-50 focus:bg-white">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1">Email</label>
+                                <div class="relative group">
+                                    <i class="fa-solid fa-envelope absolute left-3 top-3.5 text-slate-400 group-focus-within:text-indigo-500 transition text-sm"></i>
+                                    <input type="email" id="candidateEmail" placeholder="email@address.com" class="w-full pl-9 p-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-slate-50 focus:bg-white">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500 uppercase ml-1">WhatsApp Number</label>
+                                <div class="relative group">
+                                    <i class="fa-brands fa-whatsapp absolute left-3 top-3.5 text-slate-400 group-focus-within:text-indigo-500 transition text-sm"></i>
+                                    <input type="tel" id="candidateContact" placeholder="e.g. 9876543210" class="w-full pl-9 p-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-slate-50 focus:bg-white">
+                                </div>
+                            </div>
+                            
+                            <button onclick="startTest()" class="w-full bg-gradient-to-r from-slate-900 to-slate-800 hover:from-black hover:to-slate-900 text-white font-bold py-4 px-6 rounded-xl transition shadow-lg flex items-center justify-center gap-2 mt-2 group transform hover:-translate-y-0.5">
+                                Start Accounting Test <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                            
+                            <p id="formError" class="text-red-500 text-sm mt-2 hidden text-center font-bold animate-pulse">
+                                Please fill all details to proceed.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50/50 p-4 text-center text-xs text-indigo-900 border-t border-indigo-100">
+                        <i class="fa-solid fa-lock text-indigo-400"></i> SkillMoon Certified Secure Assessment
+                    </div>
+                </div>
+            </div>
+
+            <div id="quiz-section" class="hidden fade-in">
+                
+                <div class="bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-100 rounded-xl p-4 mb-6 flex items-start gap-3 shadow-sm">
+                    <div class="bg-white p-2 rounded-full shadow-sm text-indigo-600">
+                        <i class="fa-solid fa-calculator text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900" id="greeting-name">Good Luck, Accountant!</h3>
+                        <p class="text-xs text-slate-600">You are doing great. Complete all <span class="font-bold text-indigo-600">15 questions</span> to unlock your certificate.</p>
+                    </div>
+                </div>
+
+                <form id="quizForm" class="space-y-6">
+                    </form>
+
+                <div class="mt-8">
+                    <button onclick="submitQuiz()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-6 rounded-xl transition shadow-xl shadow-indigo-500/30 flex items-center justify-center gap-2 transform active:scale-95">
+                        Submit Final Score <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center py-8 text-slate-400 text-xs">
+        <p class="mb-2">SkillMoon Assessments &copy; 2026. All Rights Reserved.</p>
+        <p>ISO 9001:2015 Certified | Globally Recognized</p>
+    </footer>
+
+    <div id="resultModal" class="fixed inset-0 bg-slate-900/90 hidden items-center justify-center z-50 p-4 backdrop-blur-md">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full relative overflow-hidden animate-[bounceIn_0.5s_ease-out]">
+            
+            <div class="bg-gradient-to-r from-slate-900 to-indigo-900 p-6 text-center relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl"></div>
+
+                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2 backdrop-blur-sm border border-white/20 relative z-10">
+                    <i class="fa-solid fa-trophy text-yellow-400 text-2xl drop-shadow-md"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white relative z-10">Assessment Passed!</h2>
+                <p class="text-indigo-200 text-xs relative z-10">You have cleared the cutoff.</p>
+            </div>
+
+            <div class="p-8 text-center">
+                
+                <div class="flex justify-center items-baseline gap-1 mb-6">
+                    <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600" id="displayScore">0</span>
+                    <span class="text-slate-400 font-bold text-lg">/150</span>
+                </div>
+
+                <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-left mb-6">
+                    <h3 class="font-bold text-slate-800 text-sm mb-2">Next Step: Claim Certificate</h3>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="bg-white p-2 rounded-lg border border-indigo-100 shadow-sm text-indigo-600">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div class="text-xs text-slate-600">
+                            <p class="font-bold text-indigo-900">Professional Accountant</p>
+                            <p class="text-[10px] text-slate-500">SkillMoon Verified</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-xs text-slate-500 mb-4 px-4">
+                    Send your official score to the admin team to unlock and download your certificate immediately.
+                </p>
+
+                <a id="whatsappResultBtn" href="#" target="_blank" class="bg-[#25D366] hover:bg-[#1fbd59] text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-green-500/20 transition flex items-center justify-center gap-2 w-full transform hover:scale-[1.02]">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Send Score & Unlock
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // RANDOM USER COUNTER LOGIC
+        document.addEventListener("DOMContentLoaded", function() {
+            const min = 18;
+            const max = 48;
+            const randomCount = Math.floor(Math.random() * (max - min + 1)) + min;
+            
+            const badgeCount = document.getElementById('live-user-count');
+            const headerCount = document.getElementById('header-live-count');
+            
+            if(badgeCount) badgeCount.innerText = randomCount;
+            if(headerCount) headerCount.innerText = randomCount;
+        });
+
+        // 15 ACCOUNTING & TALLY QUESTIONS
+        const questions = [
+            { q: "Who is known as the father of modern Accounting?", options: ["Adam Smith", "Luca Pacioli", "Karl Marx", "Newton"], a: 1 },
+            { q: "Which equation is correct?", options: ["Assets = Liabilities - Capital", "Assets = Liabilities + Capital", "Assets = Capital - Liabilities", "Capital = Assets + Liabilities"], a: 1 },
+            { q: "Debit the Receiver, Credit the Giver is the rule for:", options: ["Real Account", "Personal Account", "Nominal Account", "Bank Account"], a: 1 },
+            { q: "GST stands for?", options: ["Goods and Supply Tax", "Goods and Services Tax", "Government Sales Tax", "General Service Tax"], a: 1 },
+            { q: "Which key is used for Payment Voucher in Tally Prime?", options: ["F4", "F5", "F6", "F8"], a: 1 },
+            { q: "Cash Account is a ____ account.", options: ["Real", "Personal", "Nominal", "Artificial"], a: 0 },
+            { q: "What is the shortcut key to select Company in Tally?", options: ["F1", "F3", "Alt + F3", "Alt + F1"], a: 1 },
+            { q: "Financial Year in India starts from:", options: ["1st January", "1st April", "31st March", "1st July"], a: 1 },
+            { q: "The statement that shows the financial position of a company is called?", options: ["Trial Balance", "Profit & Loss A/c", "Balance Sheet", "Cash Flow"], a: 2 },
+            { q: "Which voucher is used for depositing cash into the Bank in Tally?", options: ["Contra Voucher (F4)", "Payment Voucher (F5)", "Receipt Voucher (F6)", "Journal Voucher (F7)"], a: 0 },
+            { q: "Bad Debts is a ____ for the business.", options: ["Profit", "Asset", "Loss/Expense", "Liability"], a: 2 },
+            { q: "What comes under 'Fixed Assets'?", options: ["Cash", "Machinery", "Debtors", "Stock"], a: 1 },
+            { q: "The shortcut key for Sales Voucher in Tally is?", options: ["F8", "F9", "F7", "F5"], a: 0 },
+            { q: "Narration in accounting means:", options: ["Detailed explanation of an entry", "Name of the accountant", "Total of the ledger", "The date of entry"], a: 0 },
+            { q: "IGST applies when the transaction is:", options: ["Within the same state", "Between two different states", "Outside the country", "Within the same city"], a: 1 }
+        ];
+
+        let userDetails = { name: "", email: "", contact: "" };
+        let answeredQuestions = new Set(); 
+
+        function startTest() {
+            const nameIn = document.getElementById('candidateName');
+            const emailIn = document.getElementById('candidateEmail');
+            const contactIn = document.getElementById('candidateContact');
+            const errorMsg = document.getElementById('formError');
+
+            if (nameIn.value.trim() === "" || emailIn.value.trim() === "" || contactIn.value.trim() === "") {
+                errorMsg.classList.remove('hidden');
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            userDetails.name = nameIn.value.trim();
+            userDetails.email = emailIn.value.trim();
+            userDetails.contact = contactIn.value.trim();
+
+            const firstName = userDetails.name.split(" ")[0];
+            document.getElementById('greeting-name').innerText = `Good Luck, ${firstName}!`;
+
+            document.getElementById('intro-section').classList.add('hidden');
+            document.getElementById('quiz-section').classList.remove('hidden');
+            
+            document.getElementById('progress-container').classList.remove('hidden');
+            document.getElementById('progress-container').style.display = 'block'; 
+            
+            document.getElementById('intro-section').style.display = 'none';
+            document.getElementById('quiz-section').style.display = 'block';
+
+            renderQuestions();
+            window.scrollTo(0,0);
+        }
+
+        function renderQuestions() {
+            const form = document.getElementById('quizForm');
+            let html = "";
+
+            questions.forEach((item, index) => {
+                html += `
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm transition group relative overflow-hidden hover:border-indigo-300">
+                     <div class="absolute top-0 left-0 w-1 h-full bg-slate-100 group-hover:bg-indigo-500 transition-colors"></div>
+                    <p class="font-bold text-slate-800 mb-3 pl-2"><span class="text-indigo-600 mr-1">Q${index + 1}.</span> ${item.q}</p>
+                    <div class="space-y-2 pl-2">
+                        ${item.options.map((opt, i) => `
+                            <label class="flex items-center space-x-3 p-3 rounded-lg bg-slate-50 hover:bg-indigo-50 cursor-pointer border border-transparent hover:border-indigo-200 transition select-none">
+                                <input type="radio" name="q${index}" value="${i}" onclick="updateProgress(${index})" class="form-radio h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-slate-300">
+                                <span class="text-slate-600 text-sm">${opt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+                `;
+            });
+            form.innerHTML = html;
+        }
+
+        function updateProgress(questionIndex) {
+            answeredQuestions.add(questionIndex);
+            const total = questions.length;
+            const current = answeredQuestions.size;
+            const percentage = (current / total) * 100;
+            document.getElementById('progress-fill').style.width = percentage + "%";
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            let answeredCount = 0;
+
+            questions.forEach((item, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selected) {
+                    answeredCount++;
+                    if (parseInt(selected.value) === item.a) {
+                        score += 10;
+                    }
+                }
+            });
+
+            if(answeredCount < questions.length) {
+                if(!confirm(`You have only answered ${answeredCount} out of ${questions.length} questions. Submit anyway?`)){
+                    return;
+                }
+            }
+            showModal(score);
+        }
+
+        function showModal(score) {
+            const modal = document.getElementById('resultModal');
+            const scoreDisplay = document.getElementById('displayScore');
+            const waBtn = document.getElementById('whatsappResultBtn');
+            const targetNumber = "917012329766"; 
+
+            scoreDisplay.innerText = score;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            modal.style.display = 'flex';
+
+            // SkillMoon Accounting Specific Message
+            const text = `
+*SkillMoon Assessment Result* %0a
+---------------------------%0a
+Candidate: *${userDetails.name}* %0a
+Test: *Accounting & Tally Assessment* %0a
+Final Score: *${score}/150* %0a
+Email: ${userDetails.email} %0a
+Contact: ${userDetails.contact} %0a
+---------------------------%0a
+I have completed the Accounting test. %0a
+*Please unlock and issue my SkillMoon Certificate.*
+            `.trim();
+
+            waBtn.href = `https://wa.me/${targetNumber}?text=${text}`;
+        }
+    </script>
+</body>
+</html>
