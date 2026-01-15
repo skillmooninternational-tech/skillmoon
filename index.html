@@ -193,81 +193,182 @@
 
     <!-- Main Lead Capture Form -->
     <section id="assessment-form" class="py-12 bg-slate-50 relative z-20">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
-                <div class="bg-gradient-to-r from-indigo-700 to-purple-700 p-6 text-center">
-                    <h2 class="text-2xl font-bold text-white">Start Your Assessment & Get certified @ 499/- only</h2>
-                    <p class="text-indigo-100 text-sm mt-1">Join the elite group of certified professionals.</p>
-                </div>
-                
-                <div class="p-8">
-                    <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-slate-700">Full Name <span class="text-red-500">*</span></label>
-                                <div class="mt-1 relative rounded-md shadow-sm">
-                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <i class="fa-solid fa-user text-slate-400"></i>
-                                    </div>
-                                    <input type="text" name="name" id="name" required class="focus:ring-brand-primary focus:border-brand-primary block w-full pl-10 sm:text-sm border-slate-300 rounded-md py-3 border" placeholder="John Doe">
-                                </div>
-                            </div>
-
-                            <div>
-                                <label for="mobile" class="block text-sm font-medium text-slate-700">Mobile Number <span class="text-red-500">*</span></label>
-                                <div class="mt-1 relative rounded-md shadow-sm">
-                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <i class="fa-brands fa-whatsapp text-green-500 text-lg"></i>
-                                    </div>
-                                    <input type="tel" name="mobile" id="mobile" required pattern="[0-9]{10}" class="focus:ring-brand-primary focus:border-brand-primary block w-full pl-10 sm:text-sm border-slate-300 rounded-md py-3 border" placeholder="9847*****">
-                                </div>
-                            </div>
-                            <div>
-                                <label for="Mail" class="block text-sm font-medium text-slate-700">Mail ID <span class="text-red-500">*</span></label>
-                                <div class="mt-1 relative rounded-md shadow-sm">
-                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <i class="fa-solid fa-envelope text-blue-500 text-lg"></i>
-                                    </div>
-                                    <input type="email" name="Mail" id="Mail"  class="focus:ring-brand-primary focus:border-brand-primary block w-full pl-10 sm:text-sm border-slate-300 rounded-md py-3 border" placeholder="mailid@gmail.com">
-                                </div>
-                            </div>
-                            <div>
-                                <label for="Mail" class="block text-sm font-medium text-slate-700">Qualification <span class="text-red-500">*</span></label>
-                                <div class="mt-1 relative rounded-md shadow-sm">
-                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <i class="fa-solid fa-graduation-cap text-lg"></i>
-                                    </div>
-                                    <input type="text" name="text" id="text"  class="focus:ring-brand-primary focus:border-brand-primary block w-full pl-10 sm:text-sm border-slate-300 rounded-md py-3 border" placeholder="Qualification">
-                                </div>
-                            </div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-gradient-to-r from-indigo-700 to-purple-700 p-6 text-center">
+                <h2 class="text-2xl font-bold text-white">Start Your Assessment & Get Certified @ 499/- only</h2>
+                <p class="text-indigo-100 text-sm mt-1">Join the elite group of certified professionals.</p>
+            </div>
+            
+            <div class="p-8">
+                <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-700">Full Name <span class="text-red-500">*</span></label>
+                            <input type="text" name="name" id="name" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border-slate-300 rounded-md py-3 border px-3" placeholder="John Doe">
                         </div>
 
                         <div>
-                            <label for="assessment" class="block text-sm font-medium text-slate-700">Select Assessment Test <span class="text-red-500">*</span></label>
-                            <div class="mt-1">
-                                <select id="assessment" name="assessment" required class="block w-full pl-3 pr-10 py-3 text-base border-slate-300 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm rounded-md border bg-slate-50">
-                                    <option value="HR Assessment Test" selected>HR Assessment Test</option>
-                                    <option value="Digital Marketing Assessment">Digital Marketing Assessment</option>
-                                    <option value="Logistics Assessment">Logistics Assessment</option>
-                                    <option value="Accounting Assessment">Accounting Assessment</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
+                            <label for="mobile" class="block text-sm font-medium text-slate-700">Mobile Number <span class="text-red-500">*</span></label>
+                            <input type="tel" name="mobile" id="mobile" required pattern="[0-9]{10}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border-slate-300 rounded-md py-3 border px-3" placeholder="9847*****">
                         </div>
 
-                        <button type="submit" class="w-full flex justify-center py-4 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition items-center gap-2 transform hover:scale-[1.01] transition-transform">
-                            <span>Submit & Continue on WhatsApp</span>
-                            <i class="fa-brands fa-whatsapp text-2xl"></i>
-                        </button>
-                        
-                        <div class="text-center">
-                            <p class="text-xs text-slate-400">By clicking submit, you agree to receive the assessment link via WhatsApp.</p>
+                        <div>
+                            <label for="Mail" class="block text-sm font-medium text-slate-700">Mail ID <span class="text-red-500">*</span></label>
+                            <input type="email" name="Mail" id="Mail" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border-slate-300 rounded-md py-3 border px-3" placeholder="mailid@gmail.com">
                         </div>
-                    </form>
-                </div>
+
+                        <div>
+                            <label for="qualification" class="block text-sm font-medium text-slate-700">Qualification <span class="text-red-500">*</span></label>
+                            <input type="text" name="qualification" id="qualification" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full border-slate-300 rounded-md py-3 border px-3" placeholder="e.g. B.Com, MBA">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="assessment" class="block text-sm font-medium text-slate-700">Select Assessment Test <span class="text-red-500">*</span></label>
+                        <div class="mt-1">
+                            <select id="assessment" name="assessment" required class="block w-full pl-3 pr-10 py-3 text-base border-slate-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md border bg-slate-50">
+                                <option value="HR Assessment Test">HR Assessment Test</option>
+                                <option value="Digital Marketing Assessment">Digital Marketing Assessment</option>
+                                <option value="Logistics Assessment">Logistics Assessment</option>
+                                <option value="Accounting Assessment">Accounting Assessment</option>
+                                <option value="Data Analytics Assessment">Data Analytics Assessment</option>
+                                <option value="Excel Assessment">Excel Assessment</option>
+                                <option value="Tally Prime Assessment">Tally Prime Assessment</option>
+                                <option value="MS Office Assessment">MS Office Assessment</option>
+                                <option value="Graphic Designing Assessment">Graphic Designing Assessment</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full flex justify-center py-4 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-green-600 hover:bg-green-700 focus:outline-none transition items-center gap-2 transform hover:scale-[1.01]">
+                        <span>Submit & Continue on WhatsApp</span>
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    </button>
+
+                    <div class="relative flex py-2 items-center">
+                        <div class="flex-grow border-t border-slate-200"></div>
+                        <span class="flex-shrink-0 mx-4 text-slate-400 text-xs uppercase font-bold">OR Start Immediately</span>
+                        <div class="flex-grow border-t border-slate-200"></div>
+                    </div>
+
+                    <button type="button" onclick="handleDirectStart()" class="w-full flex justify-center py-4 px-4 border-2 border-indigo-600 rounded-lg shadow-sm text-lg font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 focus:outline-none transition items-center gap-2 transform hover:scale-[1.01]">
+                        <span>Start Online Assessment Now</span>
+                        <i class="fa-solid fa-play-circle text-2xl"></i>
+                    </button>
+                    
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<script>
+    function handleDirectStart() {
+        // 1. Get Values
+        const name = document.getElementById('name').value.trim();
+        const mobile = document.getElementById('mobile').value.trim();
+        const selection = document.getElementById('assessment').value;
+
+        // 2. Validation
+        if (name === "" || mobile === "") {
+            alert("Please enter your Full Name and Mobile Number first.");
+            return;
+        }
+
+        // 3. PAGE REDIRECTION LOGIC
+        // MAKE SURE YOUR FILES ARE SAVED WITH EXACTLY THESE NAMES:
+        let filename = "";
+
+        if (selection === "HR Assessment Test") {
+            filename = "hr-assessment-pro.html";
+        } 
+        else if (selection === "Digital Marketing Assessment") {
+            filename = "dm-assessment.html";
+        }
+        else if (selection === "Logistics Assessment") {
+            filename = "logistics-assessment.html";
+        }
+        else if (selection === "Accounting Assessment") {
+            filename = "accounting-assessment.html";
+        }
+        else if (selection === "Data Analytics Assessment") {
+            filename = "data-analytics-assessment.html";
+        }
+        else if (selection === "Excel Assessment") {
+            filename = "excel-assessment.html";
+        }
+        else if (selection === "Tally Prime Assessment") {
+            filename = "tally-assessment.html";
+        }
+        else if (selection === "MS Office Assessment") {
+            filename = "office-assessment.html";
+        }
+        else if (selection === "Graphic Designing Assessment") {
+            filename = "graphic-design-assessment.html";
+        }
+        else {
+            alert("This test is not available yet.");
+            return;
+        }
+
+        // 4. Redirect
+        window.location.href = filename;
+    }
+
+    // WhatsApp Logic
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const assessment = document.getElementById('assessment').value;
+        const mobile = "917012329766"; 
+        const text = `Hi, I am *${name}*. I want to register for the *${assessment}* and get certified.`;
+        window.open(`https://wa.me/${mobile}?text=${text}`, '_blank');
+    }
+</script>
+
+
+
+
+
+<script>
+    // Function for the NEW Button
+    function handleDirectStart() {
+        // 1. Get Values
+        const name = document.getElementById('name').value;
+        const mobile = document.getElementById('mobile').value;
+        const assessment = document.getElementById('assessment').value;
+
+        // 2. Simple Validation (Make sure they filled basics)
+        if(name.trim() === "" || mobile.trim() === "") {
+            alert("Please enter your Name and Mobile Number to start.");
+            return;
+        }
+
+        // 3. Check Selection and Redirect
+        if (assessment === "HR Assessment Test") {
+            // Redirect to the HR Page (Ensure your file is named 'hr-assessment-pro.html')
+            // You can pass the name in URL if you want advanced features, but for now simple redirect:
+            window.location.href = "hr-assessment-pro.html";
+        } 
+        else {
+            // Logic for other courses (or alert if not ready yet)
+            alert("The online test for " + assessment + " is currently loading. Please use the WhatsApp button to request the link manually.");
+        }
+    }
+
+    // Function for the WhatsApp Button (Existing logic)
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const assessment = document.getElementById('assessment').value;
+        const mobile = "917012329766"; // Your Number
+
+        const text = `Hi, I am *${name}*. I want to register for the *${assessment}* and get certified.`;
+        
+        window.open(`https://wa.me/${mobile}?text=${text}`, '_blank');
+    }
+</script>
 
     <!-- Pricing Section -->
     <section class="pb-16 bg-slate-50">
@@ -398,6 +499,37 @@
                     </div>
                     <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-blue-600"></i>
                 </button>
+                <button onclick="selectAssessment('MS Office Assessment')" class="group text-left p-5 bg-white border border-slate-200 rounded-xl hover:border-teal-500 hover:ring-2 hover:ring-teal-500/20 transition flex items-center justify-between shadow-sm hover:shadow-md">
+    <div class="flex items-center gap-3">
+        <div class="p-2 bg-teal-100 rounded-lg text-teal-600"><i class="fa-brands fa-microsoft"></i></div>
+        <span class="font-bold text-slate-700 group-hover:text-teal-600">MS Office</span>
+    </div>
+    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-teal-600"></i>
+</button>
+
+<button onclick="selectAssessment('MS Excel Assessment')" class="group text-left p-5 bg-white border border-slate-200 rounded-xl hover:border-teal-500 hover:ring-2 hover:ring-teal-500/20 transition flex items-center justify-between shadow-sm hover:shadow-md">
+    <div class="flex items-center gap-3">
+        <div class="p-2 bg-teal-100 rounded-lg text-teal-600"><i class="fa-solid fa-file-excel"></i></div>
+        <span class="font-bold text-slate-700 group-hover:text-teal-600">MS Excel</span>
+    </div>
+    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-teal-600"></i>
+</button>
+
+<button onclick="selectAssessment('Data Analytics Assessment')" class="group text-left p-5 bg-white border border-slate-200 rounded-xl hover:border-teal-500 hover:ring-2 hover:ring-teal-500/20 transition flex items-center justify-between shadow-sm hover:shadow-md">
+    <div class="flex items-center gap-3">
+        <div class="p-2 bg-teal-100 rounded-lg text-teal-600"><i class="fa-solid fa-chart-line"></i></div>
+        <span class="font-bold text-slate-700 group-hover:text-teal-600">Data Analytics</span>
+    </div>
+    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-teal-600"></i>
+</button>
+
+<button onclick="selectAssessment('Tally Prime Assessment')" class="group text-left p-5 bg-white border border-slate-200 rounded-xl hover:border-teal-500 hover:ring-2 hover:ring-teal-500/20 transition flex items-center justify-between shadow-sm hover:shadow-md">
+    <div class="flex items-center gap-3">
+        <div class="p-2 bg-teal-100 rounded-lg text-teal-600"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+        <span class="font-bold text-slate-700 group-hover:text-teal-600">Tally Prime</span>
+    </div>
+    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-teal-600"></i>
+</button>
 
                 <!-- Soft Skills (Purple) -->
                 <button onclick="selectAssessment('Soft Skills & Communication Assessment')" class="group text-left p-5 bg-white border border-slate-200 rounded-xl hover:border-purple-500 hover:ring-2 hover:ring-purple-500/20 transition flex items-center justify-between shadow-sm hover:shadow-md">
@@ -498,43 +630,81 @@
     </div>
 
     <!-- Script -->
-    <script>
-        // Function to handle clicking on assessment cards
-        function selectAssessment(testName) {
-            const select = document.getElementById('assessment');
-            select.value = testName;
-            
-            // Scroll to form
-            document.getElementById('assessment-form').scrollIntoView({ behavior: 'smooth' });
+   <script>
+    function handleDirectStart() {
+        // 1. Get Values from the form
+        const name = document.getElementById('name').value.trim();
+        const mobile = document.getElementById('mobile').value.trim();
+        const selection = document.getElementById('assessment').value;
+
+        // 2. Simple Validation
+        if (name === "" || mobile === "") {
+            alert("Please enter your Full Name and Mobile Number to start.");
+            return;
         }
 
-        // Form Handling Logic
-        function handleFormSubmit(e) {
-            e.preventDefault();
+        // 3. MAP SELECTION TO FILENAME
+        // This switch statement directs the user to the correct file based on their dropdown choice
+        let targetFile = "";
 
-            // 1. Get Values
-            const name = document.getElementById('name').value;
-            const mobile = document.getElementById('mobile').value;
-            const assessment = document.getElementById('assessment').value;
+        switch (selection) {
+            case "HR Assessment Test":
+                targetFile = "hr-assessment-pro.html";
+                break;
+                
+            case "Digital Marketing Assessment":
+                targetFile = "dm-assessment.html";
+                break;
+                
+            case "Logistics Assessment":
+                targetFile = "logistics-assessment.html";
+                break;
+                
+            case "Accounting Assessment":
+                targetFile = "accounting-assessment.html";
+                break;
+                
+            case "Data Analytics Assessment":
+                targetFile = "data-analytics-assessment.html";
+                break;
+                
+            case "Excel Assessment":
+                targetFile = "excel-assessment.html";
+                break;
+                
+            case "Tally Prime Assessment":
+                targetFile = "tally-assessment.html";
+                break;
+                
+            case "MS Office Assessment":
+                targetFile = "office-assessment.html";
+                break;
 
-            // 2. Validate (Basic)
-            if(!name || !mobile) {
-                alert("Please fill in all required fields.");
+            case "Graphic Designing Assessment":
+                targetFile = "graphic-design-assessment.html";
+                break;    
+                
+            default:
+                alert("Please select a valid assessment from the list.");
                 return;
-            }
-
-            // 3. Construct WhatsApp Message
-            // Format: "Hi SkillMoon Team, I’m interested in the [Selected Assessment Test]. My name is [User Name]. Please guide me further."
-            const text = `Hi SkillMoon Team, I'm interested in the ${assessment} (Price: ₹499). My name is ${name}. Please guide me further.`;
-            const encodedText = encodeURIComponent(text);
-
-            // 4. Redirect
-            // REPLACE '919876543210' with the actual support number
-            const phoneNumber = "919562044735"; 
-            
-            // Use setTimeout to allow UI feedback if you add loading spinners later
-            window.location.href = `https://wa.me/${phoneNumber}?text=${encodedText}`;
         }
-    </script>
+
+        // 4. Redirect the user
+        // Ensure the .html files are saved in the same folder as this landing page!
+        window.location.href = targetFile;
+    }
+
+    // Function for the WhatsApp Button
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const assessment = document.getElementById('assessment').value;
+        const mobile = "917012329766"; 
+
+        const text = `Hi, I am *${name}*. I want to register for the *${assessment}* and get certified.`;
+        window.open(`https://wa.me/${mobile}?text=${text}`, '_blank');
+    }
+</script>
+    
 </body>
 </html>
