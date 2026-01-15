@@ -3,586 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillMoon International | Certified Assessment Agency</title>
-    <meta name="description" content="SkillMoon International - ISO & IAF Affiliated Assessment Agency. Get certified in HR, Digital Marketing, Data Analytics and more for just ₹499.">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
+    <title>SkillMoon - Professional HR Assessment & Certification</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
                     colors: {
                         brand: {
-                            primary: '#9C27B0', // The specific Purple requested
-                            secondary: '#BA68C8', // Lighter Purple for gradients
-                            accent: '#FFD700',  // Gold (matches well with #9C27B0)
-                            dark: '#4A148C',    // Deep Dark Purple
-                            light: '#F3E5F5'    // Very light purple tint
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                        display: ['Montserrat', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'spin-slow': 'spin 3s linear infinite',
-                        'typewriter': 'typewriter 2s steps(40) 1s 1 normal both, blinkTextCursor 500ms steps(40) infinite normal',
-                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        glow: {
-                            'from': { boxShadow: '0 0 10px #FFD700' },
-                            'to': { boxShadow: '0 0 20px #FFD700, 0 0 30px #FDBA74' },
-                        },
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                            dark: '#0f172a',
+                            primary: '#4338ca', // Indigo 700
+                            secondary: '#ec4899', // Pink 500
+                            tertiary: '#14b8a6', // Teal 500
+                            light: '#e0e7ff',
+                            accent: '#25D366', // WhatsApp Green
                         }
                     }
                 }
             }
         }
     </script>
-
     <style>
-        /* Custom Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
+        /* Hide scrollbar for clean look in horizontal scroll if needed */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-        
-        h1, h2, h3, h4, .font-display {
-            font-family: 'Montserrat', sans-serif;
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
-
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .credential-badge {
-            transition: all 0.3s ease;
-        }
-        .credential-badge:hover {
-            transform: translateY(-5px);
-            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
-        }
-
-        /* Moon Shape Background */
-        .moon-bg {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #FFD700, #F57C00);
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.4);
-            z-index: 0;
-            opacity: 0.1;
-        }
-
-        /* Hero Gradient Background */
-        .hero-gradient {
-            background: linear-gradient(135deg, #4A148C 0%, #7B1FA2 50%, #9C27B0 100%);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #9C27B0;
-            border-radius: 5px;
-        }
-
-        /* Preloader Styles */
-        .loader-ring {
-            display: inline-block;
+        .gradient-border-card {
             position: relative;
-            width: 80px;
-            height: 80px;
+            background: #fff;
+            border-radius: 0.75rem;
+            z-index: 1;
         }
-        .loader-ring div {
-            box-sizing: border-box;
-            display: block;
+        .gradient-border-card::before {
+            content: "";
             position: absolute;
-            width: 64px;
-            height: 64px;
-            margin: 8px;
-            border: 8px solid #FFD700;
-            border-radius: 50%;
-            animation: loader-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-            border-color: #FFD700 transparent transparent transparent;
-        }
-        .loader-ring div:nth-child(1) {
-            animation-delay: -0.45s;
-        }
-        .loader-ring div:nth-child(2) {
-            animation-delay: -0.3s;
-        }
-        .loader-ring div:nth-child(3) {
-            animation-delay: -0.15s;
-        }
-        @keyframes loader-ring {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Text Reveal Animation */
-        .text-reveal {
+            inset: -2px;
+            border-radius: 0.85rem;
+            background: linear-gradient(45deg, #4338ca, #ec4899, #14b8a6);
+            z-index: -1;
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease-out forwards;
+            transition: opacity 0.3s ease;
         }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .gradient-border-card:hover::before {
+            opacity: 1;
         }
+        .header-certification {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+}
 
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.6s; }
-        .delay-3 { animation-delay: 1s; }
-
+.header-certification i {
+  color: #1e40af; /* Professional blue */
+  font-size: 14px;
+}
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
-
-    <!-- Preloader Animation -->
-    <div id="preloader" class="fixed inset-0 z-[100] bg-brand-dark flex flex-col items-center justify-center transition-opacity duration-700">
-        <div class="loader-ring mb-4"><div></div><div></div><div></div><div></div></div>
-        <div class="flex items-center gap-2 animate-pulse">
-            <i class="fas fa-moon text-brand-accent text-3xl"></i>
-            <span class="font-display font-bold text-2xl text-white tracking-widest">SKILLMOON</span>
-        </div>
-        <p class="text-brand-secondary text-sm mt-2 tracking-wide">Validating Excellence...</p>
-    </div>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-purple-100 shadow-md transition-all duration-300" id="navbar">
+    <nav class="bg-white shadow-sm fixed w-full z-50 top-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
+            <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
                    <header><img src="logo.png" alt="Company Logo" style="height:150px;"></header>
                 </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden lg:flex space-x-8 items-center">
-                    <a href="#home" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">Home</a>
-                    <a href="#about" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">About</a>
-                    <a href="#why-skillmoon" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">Why SkillMoon</a>
-                    <a href="#assessments" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">Tests</a>
-                    <a href="#pricing" class="text-slate-600 hover:text-brand-primary font-semibold transition hover:scale-105 transform">Pricing</a>
-                    <a href="#contact" class="bg-gradient-to-r from-brand-primary to-brand-secondary text-white px-6 py-2.5 rounded-full font-bold transition shadow-lg hover:shadow-purple-500/50 transform hover:-translate-y-0.5 hover:ring-2 hover:ring-offset-2 hover:ring-brand-primary">
-                        Start Assessment
+                <div class="header-certification">
+  <i class="fa-solid fa-certificate"></i>
+  <span>ISO 9001:2015 Certified Company</span>
+</div>
+                <div class="flex items-center gap-4">
+                     <span class="hidden sm:block text-xs font-bold text-brand-primary bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100 uppercase tracking-wide">
+                        Get Certified @ ₹499/-
+                    </span>
+                    <a href="#assessment-form" class="hidden md:inline-flex items-center bg-brand-primary text-white px-5 py-2 rounded-full font-medium text-sm hover:bg-indigo-700 transition shadow-md">
+                        Get Certified
                     </a>
                 </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="lg:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-brand-primary focus:outline-none p-2">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-purple-100 absolute w-full shadow-xl">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#home" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary" onclick="toggleMenu()">Home</a>
-                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary" onclick="toggleMenu()">About</a>
-                <a href="#why-skillmoon" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary" onclick="toggleMenu()">Why SkillMoon</a>
-                <a href="#assessments" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary" onclick="toggleMenu()">Assessments</a>
-                <a href="#pricing" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-purple-50 hover:text-brand-primary" onclick="toggleMenu()">Pricing</a>
-                <a href="#contact" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-bold bg-brand-primary text-white" onclick="toggleMenu()">Contact Us</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative pt-32 pb-10 lg:pt-48 lg:pb-24 overflow-hidden hero-gradient text-white">
-        <!-- Background Animations -->
-        <div class="moon-bg top-10 right-10 animate-float"></div>
-        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/20 to-transparent"></div>
-        
-        <!-- Animated Particles/Stars (Simplified) -->
-        <div class="absolute top-1/4 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-        <div class="absolute top-1/3 right-1/4 w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-75"></div>
+    <!-- Changed background to solid Slate-900 for maximum readability -->
+    <header class="relative pt-24 pb-16 lg:pt-32 lg:pb-24 bg-slate-900 overflow-hidden">
+        <!-- Subtle Grid Pattern for Texture -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#6366f1 1px, transparent 1px); background-size: 32px 32px;"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             
-            <div class="inline-block px-4 py-1.5 mb-6 border border-brand-accent/50 rounded-full bg-brand-accent/10 backdrop-blur-sm text-reveal delay-1">
-                <span class="text-brand-accent text-sm font-bold tracking-wide uppercase"><i class="fas fa-star mr-2"></i>Global Standard Certification</span>
+            <div class="inline-flex items-center gap-2 bg-indigo-900/50 border border-indigo-500/30 text-indigo-200 px-4 py-1.5 rounded-full text-xs font-semibold mb-8 backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                Now Accepting Applications
             </div>
-
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight text-reveal delay-2">
-                Validate Your Skills.<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-purple-200">Prove Your Worth.</span>
+            
+            <!-- High Contrast Typography -->
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                Evaluate Your Skills. <br>
+                <span class="text-indigo-400">Get Certified.</span> 
+                Stand Out.
             </h1>
-
-            <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed text-reveal delay-3">
-                International assessment agency for professionals. Get certified in Excel, Digital Marketing, HR, and more.
+            
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                SkillMoon’s Skill Assessment Test helps you validate your knowledge, improve employability, and gain industry recognition.
             </p>
-
-            <!-- CREDENTIALS STRIP -->
-            <div class="max-w-4xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="400">
-                <div class="glass-panel rounded-2xl p-4 md:p-6 flex flex-wrap justify-center items-center gap-4 md:gap-8 shadow-2xl shadow-purple-900/50 hover:bg-white/5 transition duration-300">
-                    <div class="flex items-center gap-2 credential-badge">
-                        <i class="fas fa-globe text-brand-accent text-xl"></i>
-                        <span class="font-bold text-white text-sm md:text-lg">International Certification</span>
-                    </div>
-                    <div class="hidden md:block w-px h-8 bg-white/20"></div>
-                    <div class="flex items-center gap-2 credential-badge">
-                        <i class="fas fa-certificate text-brand-accent text-xl"></i>
-                        <span class="font-bold text-white text-sm md:text-lg">ISO Affiliated</span>
-                    </div>
-                    <div class="hidden md:block w-px h-8 bg-white/20"></div>
-                    <div class="flex items-center gap-2 credential-badge">
-                        <i class="fas fa-award text-brand-accent text-xl"></i>
-                        <span class="font-bold text-white text-sm md:text-lg">IAF Affiliated</span>
-                    </div>
-                    <div class="hidden md:block w-px h-8 bg-white/20"></div>
-                    <div class="flex items-center gap-2 credential-badge">
-                        <i class="fas fa-building text-brand-accent text-xl"></i>
-                        <span class="font-bold text-white text-sm md:text-lg">MSME Registered</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="500">
-                <a href="#assessments" class="bg-brand-accent text-brand-dark px-8 py-4 rounded-full font-extrabold text-lg transition hover:bg-yellow-300 shadow-[0_0_20px_rgba(251,191,36,0.5)] flex items-center justify-center gap-2 animate-glow hover:scale-105 transform">
-                    View Tests <i class="fas fa-chevron-down"></i>
-                </a>
-                <button onclick="openWhatsapp('Hello SkillMoon, I want to know more about your certifications.')" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-brand-primary px-8 py-4 rounded-full font-bold text-lg transition flex items-center justify-center gap-2 hover:scale-105 transform">
-                    <i class="fab fa-whatsapp"></i> Chat with Us
-                </button>
-            </div>
-        </div>
-        
-        <!-- Wave Separator -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-16 fill-white">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
-            </svg>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <h2 class="text-brand-primary font-bold tracking-wide uppercase mb-3 text-sm">Who We Are</h2>
-                    <h3 class="text-4xl font-display font-bold text-slate-900 mb-6">Empowering Careers Globally</h3>
-                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">
-                        SkillMoon International is not just a testing agency; we are your gateway to global recognition. In a competitive job market, your skills need proof. We provide that proof through rigorous, internationally accredited assessments.
-                    </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                        <div class="flex items-center gap-4 p-4 bg-brand-light rounded-xl border border-purple-100 hover:shadow-md transition group">
-                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-primary shadow-sm group-hover:bg-brand-primary group-hover:text-white transition">
-                                <i class="fas fa-certificate text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-800">ISO Certified</h4>
-                                <p class="text-xs text-slate-500">Quality Assured</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 bg-brand-light rounded-xl border border-purple-100 hover:shadow-md transition group">
-                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-primary shadow-sm group-hover:bg-brand-primary group-hover:text-white transition">
-                                <i class="fas fa-globe-asia text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-800">International</h4>
-                                <p class="text-xs text-slate-500">Valid Worldwide</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative" data-aos="fade-left">
-                    <div class="absolute -inset-4 bg-gradient-to-r from-brand-accent to-brand-primary rounded-2xl blur-lg opacity-30 animate-pulse"></div>
-                    <div class="relative bg-white p-2 rounded-2xl shadow-xl">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Assessment" class="rounded-xl w-full object-cover h-80 lg:h-96 hover:scale-[1.02] transition duration-500">
-                        <div class="absolute bottom-6 right-6 bg-white p-4 rounded-xl shadow-lg flex items-center gap-3 animate-float">
-                            <div class="text-3xl font-bold text-brand-primary">10k+</div>
-                            <div class="text-sm font-semibold text-slate-600 leading-tight">Certified<br>Professionals</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- NEW SECTION: Why SkillMoon -->
-    <section id="why-skillmoon" class="py-24 bg-brand-light relative">
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-purple-50 skew-x-12 opacity-50 -z-0"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-brand-primary font-bold tracking-wider uppercase">Our Advantage</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-dark mt-2 mb-4">Why Choose SkillMoon?</h2>
-                <div class="w-24 h-1.5 bg-brand-accent mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 text-center hover:transform hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-2xl">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-slate-900">Global Recognition</h3>
-                    <p class="text-slate-600 text-sm">Your certificate is valid across borders, opening international career opportunities.</p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 text-center hover:transform hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-2xl">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-slate-900">Instant Results</h3>
-                    <p class="text-slate-600 text-sm">Get your score immediately after completing the assessment. No waiting time.</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 text-center hover:transform hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-2xl">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-slate-900">Digital Badges</h3>
-                    <p class="text-slate-600 text-sm">Shareable digital badges for LinkedIn and resumes that can be verified online.</p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 text-center hover:transform hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-2xl">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3 text-slate-900">Secure Testing</h3>
-                    <p class="text-slate-600 text-sm">Our AI-proctored environment ensures the highest standards of integrity.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Assessment Tests Section -->
-    <section id="assessments" class="py-24 bg-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-brand-primary font-bold tracking-wider uppercase">Our Tests</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-dark mt-2 mb-4">Choose Your Assessment</h2>
-                <div class="w-24 h-1.5 bg-brand-accent mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Card 1 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-brand-primary group border border-slate-100" data-aos="fade-up" data-aos-delay="0">
-                    <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-primary transition-colors duration-300">
-                        <i class="fas fa-users text-3xl text-brand-primary group-hover:text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">HR Management</h3>
-                    <p class="text-slate-500 mb-6 text-sm">Validate your skills in recruitment, employee relations, and organizational structure.</p>
-<a 
-  href="./HRasses.html" 
-  class="block text-center w-full py-3 border-2 border-brand-primary text-brand-primary font-bold rounded-lg hover:bg-brand-primary hover:text-white transition">
-  Write Test Now
-</a>                    <button onclick="openWhatsapp('I am interested in the HR Management Assessment.')" class="w-full py-3 border-2 border-brand-primary text-brand-primary font-bold rounded-lg hover:bg-brand-primary hover:text-white transition">Book Now</button>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-brand-accent group border border-slate-100" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-accent transition-colors duration-300">
-                        <i class="fas fa-bullhorn text-3xl text-yellow-600 group-hover:text-brand-dark"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Digital Marketing</h3>
-                    <p class="text-slate-500 mb-6 text-sm">Prove your expertise in SEO, Social Media, Content Strategy, and Analytics.</p>
-                    <button onclick="openWhatsapp('I am interested in the Digital Marketing Assessment.')" class="w-full py-3 border-2 border-brand-accent text-brand-dark font-bold rounded-lg hover:bg-brand-accent transition">Book Now</button>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-brand-primary group border border-slate-100" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-primary transition-colors duration-300">
-                        <i class="fas fa-chart-line text-3xl text-brand-primary group-hover:text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Data Analytics</h3>
-                    <p class="text-slate-500 mb-6 text-sm">Showcase your ability to interpret data, visualize trends, and drive decisions.</p>
-                    <button onclick="openWhatsapp('I am interested in the Data Analytics Assessment.')" class="w-full py-3 border-2 border-brand-primary text-brand-primary font-bold rounded-lg hover:bg-brand-primary hover:text-white transition">Book Now</button>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-brand-primary group border border-slate-100" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-primary transition-colors duration-300">
-                        <i class="fas fa-building text-3xl text-brand-primary group-hover:text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Office Administration</h3>
-                    <p class="text-slate-500 mb-6 text-sm">Certification for front desk operations, scheduling, and office management.</p>
-                    <button onclick="openWhatsapp('I am interested in the Office Administration Assessment.')" class="w-full py-3 border-2 border-brand-primary text-brand-primary font-bold rounded-lg hover:bg-brand-primary hover:text-white transition">Book Now</button>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-green-500 group border border-slate-100" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-500 transition-colors duration-300">
-                        <i class="fas fa-file-excel text-3xl text-green-600 group-hover:text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Advanced Excel</h3>
-                    <p class="text-slate-500 mb-6 text-sm">Master VLOOKUP, Pivot Tables, and macros. Essential for every corporate job.</p>
-                    <button onclick="openWhatsapp('I am interested in the Excel Assessment.')" class="w-full py-3 border-2 border-green-500 text-green-600 font-bold rounded-lg hover:bg-green-500 hover:text-white transition">Book Now</button>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-b-4 border-blue-500 group border border-slate-100" data-aos="fade-up" data-aos-delay="500">
-                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500 transition-colors duration-300">
-                        <i class="fas fa-file-word text-3xl text-blue-600 group-hover:text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Microsoft Word</h3>
-                    <p class="text-slate-500 mb-6 text-sm">Certification in document creation, formatting, and professional reporting.</p>
-                    <button onclick="openWhatsapp('I am interested in the Microsoft Word Assessment.')" class="w-full py-3 border-2 border-blue-500 text-blue-600 font-bold rounded-lg hover:bg-blue-500 hover:text-white transition">Book Now</button>
-                </div>
-
-            </div>
             
-            <div class="text-center mt-12">
-                 <button onclick="openWhatsapp('I want to know about other available assessments.')" class="text-slate-500 font-semibold hover:text-brand-primary transition">See More Assessments <i class="fas fa-arrow-right ml-1"></i></button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-brand-dark text-white relative overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-accent rounded-full blur-3xl opacity-20 animate-pulse"></div>
-        <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-secondary rounded-full blur-3xl opacity-20"></div>
-
-        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center" data-aos="zoom-in">
-            <h2 class="text-3xl font-bold mb-8">Transparent Pricing</h2>
-            
-            <div class="bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-md border border-brand-accent/30 rounded-3xl p-8 md:p-12 relative hover:scale-105 transition duration-500">
-                <div class="absolute top-0 right-0 bg-brand-accent text-brand-dark font-bold text-xs uppercase px-3 py-1 rounded-bl-xl rounded-tr-2xl">Limited Time Offer</div>
-                
-                <h3 class="text-2xl mb-4 text-slate-200">Certification Cost</h3>
-                <div class="flex justify-center items-end gap-2 mb-6">
-                    <span class="text-6xl font-display font-bold text-brand-accent">₹499</span>
-                    <span class="text-xl text-slate-400 mb-2">/ assessment</span>
+            <!-- Trust Indicators Hero -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center text-sm text-slate-300 mb-10 font-medium">
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-check text-green-500 text-lg"></i> Industry-aligned
                 </div>
-                
-                <ul class="text-left max-w-xs mx-auto space-y-3 mb-8 text-slate-300">
-                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Valid Worldwide</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Instant Digital Certificate</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> ISO Accredited Badge</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Verifiable Online</li>
-                </ul>
-
-                <button onclick="openWhatsapp('I want to book an assessment for Rs 499.')" class="w-full md:w-auto px-10 py-4 bg-brand-accent hover:bg-yellow-300 text-brand-dark font-bold rounded-full transition shadow-[0_0_20px_rgba(251,191,36,0.4)] animate-pulse hover:scale-105 transform">
-                    Get Certified Now
-                </button>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-check text-green-500 text-lg"></i> Instant Result
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-check text-green-500 text-lg"></i> Add In Resume
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-check text-green-500 text-lg"></i> Crack Interviews
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-check text-green-500 text-lg"></i> Professional Use
+                </div>
             </div>
+
+            <a href="#assessment-form" class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 text-lg font-bold text-white bg-brand-primary rounded-lg hover:bg-indigo-600 transition transform hover:-translate-y-1 shadow-lg shadow-indigo-500/30 ring-1 ring-indigo-500">
+                Start Assessment <i class="fa-solid fa-arrow-down ml-2"></i>
+            </a>
+
         </div>
-    </section>
+    </header>
 
-    <!-- Contact & Enquiry Section -->
-    <section id="contact" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-slate-900">Start Your Journey</h2>
-                <p class="text-slate-500 mt-2">Fill the form or contact us directly.</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
+    <!-- Credibility Bar (Colorful by Default) -->
+    <div class="bg-white border-b border-slate-200 py-6 relative z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-center text-xs text-slate-400 font-semibold uppercase tracking-widest mb-4">Recognized & Accredited By</p>
+            <!-- Removed grayscale classes -->
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
                 
-                <!-- Contact Info Side -->
-                <div class="bg-brand-primary p-10 text-white flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-40 h-40 bg-white opacity-5 rounded-full -mr-10 -mt-10 animate-pulse"></div>
-                    <div class="absolute bottom-0 left-0 w-40 h-40 bg-brand-accent opacity-10 rounded-full -ml-10 -mb-10"></div>
-                    
-                    <div class="relative z-10">
-                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4 group cursor-pointer hover:translate-x-2 transition">
-                                <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                                    <i class="fab fa-whatsapp text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="text-purple-200 text-sm">WhatsApp / Call</p>
-                                    <p class="font-bold text-lg">+91 9562044735</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center gap-4 group cursor-pointer hover:translate-x-2 transition">
-                                <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-envelope text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="text-purple-200 text-sm">Email Support</p>
-                                    <p class="font-bold text-lg break-all">info@skillmooninternational.com</p>
-                                </div>
-                            </div>
-
-                            <div class="mt-8 pt-8 border-t border-white/20">
-                                <h4 class="font-bold mb-4">Accreditations</h4>
-                                <div class="flex gap-4">
-                                    <span class="bg-white/10 px-3 py-1 rounded text-sm border border-white/20 hover:bg-white/20 transition">ISO</span>
-                                    <span class="bg-white/10 px-3 py-1 rounded text-sm border border-white/20 hover:bg-white/20 transition">IAF</span>
-                                    <span class="bg-white/10 px-3 py-1 rounded text-sm border border-white/20 hover:bg-white/20 transition">MSME</span>
-                                </div>
-                            </div>
-                        </div>
+                <!-- ISO Badge -->
+                <div class="flex items-center gap-2 group hover:scale-105 transition-transform duration-300">
+                    <div class="bg-slate-900 text-white p-1 rounded font-bold text-xs border-2 border-slate-900 shadow-md">ISO</div>
+                    <div class="flex flex-col leading-none">
+                        <span class="text-sm font-bold text-slate-800">9001:2015</span>
+                        <span class="text-[10px] text-slate-500">Certified</span>
                     </div>
                 </div>
 
-                <!-- Enquiry Form Side -->
-                <div class="p-10">
-                    <form onsubmit="event.preventDefault(); sendEnquiry();">
-                        <div class="space-y-4">
+                <!-- IAF Badge -->
+                <div class="flex items-center gap-2 group hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-globe text-blue-600 text-3xl shadow-blue-200 drop-shadow-sm"></i>
+                    <span class="text-sm font-bold text-slate-800 tracking-wide">IAF <span class="font-normal text-slate-500">Member</span></span>
+                </div>
+
+                <!-- MSME Badge -->
+                <div class="flex items-center gap-2 group hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-building-columns text-orange-500 text-3xl shadow-orange-200 drop-shadow-sm"></i>
+                    <div class="flex flex-col leading-none">
+                        <span class="text-xs font-bold text-slate-800">GOVT OF INDIA</span>
+                        <span class="text-sm font-bold text-slate-800">MSME</span>
+                    </div>
+                </div>
+
+                 <!-- Startup India (Simulated) -->
+                 <div class="flex items-center gap-2 group hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-rocket text-brand-primary text-2xl shadow-indigo-200 drop-shadow-sm"></i>
+                    <span class="text-sm font-bold text-slate-800 tracking-tight">#Startup<span class="text-brand-primary">India</span></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Lead Capture Form -->
+    <section id="assessment-form" class="py-12 bg-slate-50 relative z-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+                <div class="bg-gradient-to-r from-indigo-700 to-purple-700 p-6 text-center">
+                    <h2 class="text-2xl font-bold text-white">Start Your Assessment</h2>
+                    <p class="text-indigo-100 text-sm mt-1">Join the elite group of certified professionals.</p>
+                </div>
+                
+                <div class="p-8">
+                    <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
-                                <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition" placeholder="Your Name">
+                                <label for="name" class="block text-sm font-medium text-slate-700">Full Name <span class="text-red-500">*</span></label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fa-solid fa-user text-slate-400"></i>
+                                    </div>
+                                    <input type="text" name="name" id="name" required class="focus:ring-brand-primary focus:border-brand-primary block w-full pl-10 sm:text-sm border-slate-300 rounded-md py-3 border" placeholder="John Doe">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="mobile" class="block text-sm font-medium text-slate-700">Mobile Number <span class="text-red-500">*</span></label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fa-brands fa-whatsapp text-green-500 text-lg"></i>
+                                    </div>
+                                    <input type="tel" name="mobile" id="mobile" required pattern="[0-9]{10}" class="focus:ring-brand-primary focus:border-brand-primary block w-full pl-10 sm:text-sm border-slate-300 rounded-md py-3 border" placeholder="9876543210">
+                                </div>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
-                                <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition" placeholder="WhatsApp Number">
+                                <label for="Mail" class="block text-sm font-medium text-slate-700">Mail ID <span class="text-red-500">*</span></label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fa-solid fa-envelope text-blue-500 text-lg"></i>
+                                    </div>
+                                    <input type="email" name="Mail" id="Mail"  class="focus:ring-brand-primary focus:border-brand-primary block w-full pl-10 sm:text-sm border-slate-300 rounded-md py-3 border" placeholder="mailid@gmail.com">
+                                </div>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">Interested Assessment</label>
-                                <select id="course" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition">
-                                    <option>Select an option</option>
-                                    <option>HR Management</option>
-                                    <option>Digital Marketing</option>
-                                    <option>Data Analytics</option>
-                                    <option>Excel / Word</option>
-                                    <option>Office Admin</option>
-                                    <option>Other</option>
+                                <label for="Mail" class="block text-sm font-medium text-slate-700">Qualification <span class="text-red-500">*</span></label>
+                                <div class="mt-1 relative rounded-md shadow-sm">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fa-solid fa-graduation-cap text-lg"></i>
+                                    </div>
+                                    <input type="text" name="text" id="text"  class="focus:ring-brand-primary focus:border-brand-primary block w-full pl-10 sm:text-sm border-slate-300 rounded-md py-3 border" placeholder="Qualification">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="assessment" class="block text-sm font-medium text-slate-700">Select Assessment Test <span class="text-red-500">*</span></label>
+                            <div class="mt-1">
+                                <select id="assessment" name="assessment" required class="block w-full pl-3 pr-10 py-3 text-base border-slate-300 focus:outline-none focus:ring-brand-primary focus:border-brand-primary sm:text-sm rounded-md border bg-slate-50">
+                                    <option value="HR Assessment Test" selected>HR Assessment Test</option>
+                                    <option value="Digital Marketing Assessment">Digital Marketing Assessment</option>
+                                    <option value="Logistics Assessment">Logistics Assessment</option>
+                                    <option value="Accounting Assessment">Accounting Assessment</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
-                            <button type="submit" class="w-full bg-brand-primary hover:bg-brand-secondary text-white font-bold py-3.5 rounded-lg transition shadow-lg mt-2 hover:shadow-xl transform hover:-translate-y-1">
-                                Send Enquiry
-                            </button>
+                        </div>
+
+                        <button type="submit" class="w-full flex justify-center py-4 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition items-center gap-2 transform hover:scale-[1.01] transition-transform">
+                            <span>Submit & Continue on WhatsApp</span>
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        </button>
+                        
+                        <div class="text-center">
+                            <p class="text-xs text-slate-400">By clicking submit, you agree to receive the assessment link via WhatsApp.</p>
                         </div>
                     </form>
                 </div>
@@ -590,100 +265,272 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-brand-dark text-slate-400 py-12 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <div class="mb-6 md:mb-0">
-                    <span class="font-display font-bold text-2xl text-white">Skill<span class="text-brand-accent">Moon</span></span>
-                    <p class="mt-2 text-sm max-w-xs mx-auto md:mx-0">Validating potential, certifying excellence. The global standard for professional assessments.</p>
+    <!-- Pricing Section -->
+    <section class="pb-16 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl p-8 border-2 border-brand-primary flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl relative overflow-hidden ring-4 ring-indigo-50">
+                <!-- Ribbon -->
+                <div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-8 py-1 transform rotate-45 translate-x-8 translate-y-4 shadow-sm z-10">
+                    LIMITED OFFER
                 </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="hover:text-brand-accent transition hover:scale-110 transform"><i class="fab fa-facebook text-xl"></i></a>
-                    <a href="#" class="hover:text-brand-accent transition hover:scale-110 transform"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="#" class="hover:text-brand-accent transition hover:scale-110 transform"><i class="fab fa-linkedin text-xl"></i></a>
+
+                <div class="md:w-3/5">
+                    <span class="bg-indigo-100 text-brand-primary text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Certification Program</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-2">Get Industry Recognized</h2>
+                    <p class="text-slate-600 mt-2 text-sm leading-relaxed">
+                        Unlock your complete potential with our verified assessment. Receive a shareable certificate valid for jobs and academic submissions.
+                    </p>
+                    <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Lifetime Validity</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Digital Badge Included</li>
+                    </ul>
+                </div>
+
+                <div class="md:w-2/5 flex flex-col items-center justify-center border-t md:border-t-0 md:border-l border-slate-100 pt-6 md:pt-0 md:pl-6 w-full">
+                    <p class="text-sm text-slate-400 line-through font-medium">₹1,999</p>
+                    <div class="flex items-baseline mb-2">
+                        <span class="text-5xl font-extrabold text-brand-primary">₹499</span>
+                        <span class="text-xl text-slate-500 ml-1">/-</span>
+                    </div>
+                    <p class="text-xs text-green-600 font-semibold mb-4 bg-green-50 px-2 py-1 rounded">Save 75% Today</p>
+                    <a href="#assessment-form" class="text-sm font-semibold text-brand-primary hover:text-indigo-800 underline decoration-2 underline-offset-2">Scroll Up to Register</a>
                 </div>
             </div>
-            <div class="mt-8 pt-8 border-t border-white/10 text-sm text-center">
-                &copy; <span id="year"></span> SkillMoon International. All rights reserved.
+        </div>
+    </section>
+
+    <!-- Why Choose Section (Enhanced Color) -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-base text-brand-secondary font-semibold tracking-wide uppercase">Advantages</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                    Why Choose SkillMoon?
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1: Indigo Theme -->
+                <div class="gradient-border-card p-6 shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-100 text-brand-primary rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+                        <i class="fa-solid fa-bullseye text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Core Competencies</h3>
+                    <p class="text-slate-600">Measures Recruitment, Payroll, Compliance, and HR Operations skills precisely.</p>
+                </div>
+
+                <!-- Card 2: Pink Theme -->
+                <div class="gradient-border-card p-6 shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="w-14 h-14 bg-pink-100 text-brand-secondary rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+                        <i class="fa-solid fa-user-tie text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Expert Designed</h3>
+                    <p class="text-slate-600">Curated by industry experts to match current market standards.</p>
+                </div>
+
+                <!-- Card 3: Teal Theme -->
+                <div class="gradient-border-card p-6 shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="w-14 h-14 bg-teal-100 text-brand-tertiary rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+                        <i class="fa-solid fa-briefcase text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Job Readiness</h3>
+                    <p class="text-slate-600">Improves your confidence for interviews and employability score.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Assessments (Reordered & Colorized) -->
+    <section class="py-16 bg-slate-50 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-2">Explore Other Assessments</h2>
+            <p class="text-center text-slate-500 mb-10">Select your domain of expertise</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- HR (Indigo) -->
+                <button onclick="selectAssessment('HR Management Assessment')" class="group text-left p-5 bg-white border border-slate-200 rounded-xl hover:border-brand-primary hover:ring-2 hover:ring-brand-primary/20 transition flex items-center justify-between shadow-sm hover:shadow-md">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-indigo-100 rounded-lg text-brand-primary"><i class="fa-solid fa-users"></i></div>
+                        <span class="font-bold text-slate-700 group-hover:text-brand-primary">HR Management</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-brand-primary"></i>
+                </button>
+
+                <!-- Digital Marketing (Orange) -->
+                <button onclick="selectAssessment('Digital Marketing Assessment')" class="group text-left p-5 bg-white border border-slate-200 rounded-xl hover:border-orange-500 hover:ring-2 hover:ring-orange-500/20 transition flex items-center justify-between shadow-sm hover:shadow-md">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-orange-100 rounded-lg text-orange-600"><i class="fa-solid fa-bullhorn"></i></div>
+                        <span class="font-bold text-slate-700 group-hover:text-orange-600">Digital Marketing</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-orange-600"></i>
+                </button>
+
+                <!-- Logistics (Teal) -->
+                <button onclick="selectAssessment('Logistics & Supply Chain Assessment')" class="group text-left p-5 bg-white border border-slate-200 rounded-xl hover:border-teal-500 hover:ring-2 hover:ring-teal-500/20 transition flex items-center justify-between shadow-sm hover:shadow-md">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-teal-100 rounded-lg text-teal-600"><i class="fa-solid fa-truck-fast"></i></div>
+                        <span class="font-bold text-slate-700 group-hover:text-teal-600">Logistics & Supply</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-teal-600"></i>
+                </button>
+
+                <!-- Accounting (Emerald) -->
+                <button onclick="selectAssessment('Accounting & Finance Assessment')" class="group text-left p-5 bg-white border border-slate-200 rounded-xl hover:border-emerald-600 hover:ring-2 hover:ring-emerald-600/20 transition flex items-center justify-between shadow-sm hover:shadow-md">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-emerald-100 rounded-lg text-emerald-600"><i class="fa-solid fa-calculator"></i></div>
+                        <span class="font-bold text-slate-700 group-hover:text-emerald-600">Accounting</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-emerald-600"></i>
+                </button>
+
+                <!-- Analytics (Blue) -->
+                <button onclick="selectAssessment('Business Analytics Assessment')" class="group text-left p-5 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:ring-2 hover:ring-blue-500/20 transition flex items-center justify-between shadow-sm hover:shadow-md">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-blue-100 rounded-lg text-blue-600"><i class="fa-solid fa-chart-line"></i></div>
+                        <span class="font-bold text-slate-700 group-hover:text-blue-600">Business Analytics</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-blue-600"></i>
+                </button>
+
+                <!-- Soft Skills (Purple) -->
+                <button onclick="selectAssessment('Soft Skills & Communication Assessment')" class="group text-left p-5 bg-white border border-slate-200 rounded-xl hover:border-purple-500 hover:ring-2 hover:ring-purple-500/20 transition flex items-center justify-between shadow-sm hover:shadow-md">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-purple-100 rounded-lg text-purple-600"><i class="fa-solid fa-comments"></i></div>
+                        <span class="font-bold text-slate-700 group-hover:text-purple-600">Soft Skills</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-purple-600"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience (Enhanced Color) -->
+    <section class="py-16 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-10">Who Should Take This Test?</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                
+                <div class="bg-indigo-50 p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300 border border-indigo-100">
+                    <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-4 text-brand-primary">
+                        <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-indigo-900">MBA / BBA Students</h4>
+                </div>
+
+                <div class="bg-pink-50 p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300 border border-pink-100">
+                    <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-4 text-brand-secondary">
+                        <i class="fa-solid fa-user-graduate text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-pink-900">Fresh Graduates</h4>
+                </div>
+
+                <div class="bg-teal-50 p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300 border border-teal-100">
+                    <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-4 text-brand-tertiary">
+                        <i class="fa-solid fa-building-user text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-teal-900">HR Professionals</h4>
+                </div>
+
+                <div class="bg-amber-50 p-6 rounded-2xl text-center hover:-translate-y-1 transition duration-300 border border-amber-100">
+                    <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-4 text-amber-500">
+                        <i class="fa-solid fa-shuffle text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-amber-900">Career Switchers</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 pb-24 md:pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-2 text-white mb-4">
+                        <i class="fa-solid fa-moon text-brand-primary"></i>
+                        <span class="font-bold text-xl">SkillMoon</span>
+                    </div>
+                    <p class="text-sm text-slate-400">Validating skills, empowering careers. The trusted assessment partner for students and professionals.</p>
+                </div>
+                
+                <!-- Quick Stats/Trust -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Why Trust Us</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-primary"></i> 1000+ Learners Assessed</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-primary"></i> Industry-Relevant Certs</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-primary"></i> Fast & Secure Process</li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact Us</h3>
+                    <a href="https://wa.me/919876543210" class="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Chat with Support
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
+                &copy; 2024 SkillMoon Assessment Services. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <!-- Fixed Floating WhatsApp Button -->
-    <a href="javascript:openWhatsapp('Hello SkillMoon, I need assistance.')" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.5)] transition transform hover:scale-110 flex items-center justify-center group animate-bounce">
-        <i class="fab fa-whatsapp text-3xl"></i>
-        <span class="absolute right-full mr-4 bg-white text-slate-800 px-3 py-1 rounded shadow-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition whitespace-nowrap hidden md:block">Chat Now</span>
-    </a>
+    <!-- Sticky Mobile CTA -->
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-4 md:hidden z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] flex items-center justify-between gap-4">
+        <div class="flex flex-col">
+            <span class="text-xs text-slate-500 line-through">₹1,999</span>
+            <span class="font-bold text-slate-900">₹499/-</span>
+        </div>
+        <a href="#assessment-form" class="flex-1 flex items-center justify-center bg-brand-primary text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-indigo-700 transition gap-2">
+            Start Assessment <i class="fa-solid fa-arrow-up"></i>
+        </a>
+    </div>
 
-    <!-- AOS Animation Script -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Script -->
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100,
-        });
-
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Loading Screen Logic
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 700);
-            }, 1800); // 1.8s delay to show off animation
-        });
-
-        // Mobile Menu Logic
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        let isMenuOpen = false;
-
-        function toggleMenu() {
-            isMenuOpen = !isMenuOpen;
-            if (isMenuOpen) {
-                mobileMenu.classList.remove('hidden');
-                menuBtn.innerHTML = '<i class="fas fa-times text-2xl text-brand-primary"></i>';
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuBtn.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
-            }
-        }
-
-        menuBtn.addEventListener('click', toggleMenu);
-
-        // WhatsApp Logic
-        function openWhatsapp(message) {
-            const number = "919562044735";
-            const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-
-        // Enquiry Form Logic (Simulated)
-        function sendEnquiry() {
-            const name = document.getElementById('name').value;
-            const course = document.getElementById('course').value;
+        // Function to handle clicking on assessment cards
+        function selectAssessment(testName) {
+            const select = document.getElementById('assessment');
+            select.value = testName;
             
-            if(!name) return alert("Please enter your name");
-
-            const msg = `Hi SkillMoon, My name is ${name}. I would like to enquire about ${course}.`;
-            openWhatsapp(msg);
+            // Scroll to form
+            document.getElementById('assessment-form').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md', 'py-0');
-            } else {
-                navbar.classList.remove('shadow-md', 'py-2');
+        // Form Handling Logic
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            // 1. Get Values
+            const name = document.getElementById('name').value;
+            const mobile = document.getElementById('mobile').value;
+            const assessment = document.getElementById('assessment').value;
+
+            // 2. Validate (Basic)
+            if(!name || !mobile) {
+                alert("Please fill in all required fields.");
+                return;
             }
-        });
+
+            // 3. Construct WhatsApp Message
+            // Format: "Hi SkillMoon Team, I’m interested in the [Selected Assessment Test]. My name is [User Name]. Please guide me further."
+            const text = `Hi SkillMoon Team, I'm interested in the ${assessment} (Price: ₹499). My name is ${name}. Please guide me further.`;
+            const encodedText = encodeURIComponent(text);
+
+            // 4. Redirect
+            // REPLACE '919876543210' with the actual support number
+            const phoneNumber = "919876543210"; 
+            
+            // Use setTimeout to allow UI feedback if you add loading spinners later
+            window.location.href = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+        }
     </script>
 </body>
 </html>
